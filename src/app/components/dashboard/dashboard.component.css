@@ -1,0 +1,208 @@
+
+*{
+    font-family: "Plus Jakarta Sans", Arial, Helvetica, sans-serif ;
+
+}
+
+.sidebar-row{
+    height: 100vh;
+    width: 100vw;
+}
+
+.container{
+    overflow: hidden;
+}
+
+.logo{
+    height: 2rem;
+    width: 2rem;
+}
+
+.sidebar{
+    overflow: hidden;
+    
+}
+
+.logo-heading{
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    height: max-content;
+}
+
+.sideItem-container{
+    overflow-y: scroll;
+    max-height: 75vh;
+    padding: 1rem 1rem 1rem 0;
+    margin-left: -0.75rem;
+
+}
+.sidebarItem{
+
+    height: 3.5rem;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    font-size: 15px;
+    border-top-right-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    transition: background-image 0.3s ease ;
+    font-weight: 500;
+}
+
+.sidebarItem:hover{
+    background-color: #e0d7f7;
+    background-image: linear-gradient(to right, #f1ebff, #f1ebff);
+    background-position: 0 100%;
+
+}
+
+.sideItem-container::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px grey;
+	background-color: white;
+}
+
+.sideItem-container::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: white;
+}
+
+.sideItem-container::-webkit-scrollbar-thumb
+{
+	background-color: grey;
+}
+
+.bi{
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.dropdown{
+    padding-left:4rem;
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s ease;
+    
+}
+
+.dropdown-active{
+    height: 9rem;
+}
+.dropdown li{
+  list-style: none;
+  height: 3rem;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    border-top-right-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    transition: background-image 0.3s ease ;
+}
+
+.dropdown li a{
+    font-size: 15px;
+    font-weight: 500;
+    color: grey;
+}
+
+.dashboard{
+    background-color: #f8f5f5;
+    overflow-y: scroll;
+}
+
+.dashboard::-webkit-scrollbar{
+    display: none;
+}
+
+.navbar{
+    height: 5rem;
+    border-radius: 1rem;
+    background-color: white;
+}
+
+.navbar img{
+    height: 3rem;
+    width: 3rem;
+    margin-top: 0.3rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.navbar i{
+    padding-top: 2rem;
+    cursor: pointer;
+}
+
+.sidebar-logout{
+    
+    background-color: #e0d7f7;
+    margin-top: 2rem;
+    border-radius: 1.5rem;
+    padding: 0.5rem
+    
+}
+
+.sidebar-logout img{
+    height: 3rem;
+    width: 3rem;
+    margin-top: 0.3rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.logout-button{
+    cursor: pointer;
+}
+
+.filter{
+    height: 5rem;
+    border-radius: 1rem;
+    background-color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.filter-type{
+    height: 2.5rem;
+    padding-right: 1rem;
+    border-radius: 0%;
+    border-right: 0.1rem solid rgb(209, 208, 208);
+    cursor: pointer;
+    
+}
+
+.filter-type button{
+    font-family: "Plus Jakarta Sans", Arial, Helvetica, sans-serif ;
+    font-weight: 400;
+    color:grey
+}
+
+.filter-options{
+    position: relative;
+    /* left:-10rem; */
+    /* top:2rem; */
+    width: max-content;
+    border-radius: 1rem;
+    height: max-content;
+    padding: 0.7rem;
+
+}
+
+.filter-options li{
+    border-radius: 1rem;
+}
+
+.filter-options li a{
+    list-style: none;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 400;   
+    border-radius: 1rem;
+    color:grey
+}
+
+.filter-options li a:hover{
+    background-color: #f4efff;
+}
+
+
