@@ -1,16 +1,180 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu'
 import { MatButtonModule } from '@angular/material/button'
+import Chart from 'chart.js/auto';
+import zoomPlugin from 'chartjs-plugin-zoom';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, MatMenuModule, MatButtonModule],
+  imports: [CommonModule, MatMenuModule, MatButtonModule, NavbarComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
+
+  donughtLabels = [
+    'Subscriptions',
+    'Customers',
+  ]
+  donughtBackColor = [
+    'rgb(255, 99, 132)',
+    'rgb(54, 162, 235)',
+  ]
+  donughtData = [502, 753]
+
+  combinedData: any[] = []
+
+  graphType: any = 'line'
+
+  graphPeriod: any = 'day'
+
+  lineChartConfig: any = {
+    type: 'line',
+    data: {
+      labels: [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ],
+      datasets: [{
+        label: 'Churn Subscription',
+        data: [23, 45, 67, 12, 89, 34, 56, 78, 90, 21, 43, 65],
+
+        borderColor: 'rgb(255, 99, 132)',
+
+        borderWidth: 2
+      }, {
+        label: 'New Subscription',
+        data: [5, 95, 15, 85, 25, 75, 35, 65, 45, 55, 10, 90],
+
+        borderColor: 'black',
+
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        zoom: {
+          zoom: {
+            wheel: {
+              enabled: true,
+              modifierKey: 'ctrl',
+              speed: 0.2
+            },
+
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  }
+
+  barChartConfig: any = {
+    type: 'bar',
+    data: {
+      labels: [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ],
+      datasets: [{
+        label: 'Churn Subscription',
+        data: [23, 45, 67, 12, 89, 34, 56, 78, 90, 21, 43, 65],
+
+        borderColor: 'rgb(255, 99, 132)',
+
+        borderWidth: 2
+      }, {
+        label: 'New Subscription',
+        data: [5, 95, 15, 85, 25, 75, 35, 65, 45, 55, 10, 90],
+
+        borderColor: 'black',
+
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        zoom: {
+          zoom: {
+            wheel: {
+              enabled: true,
+              modifierKey: 'ctrl',
+              speed: 0.2
+            },
+
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  }
+
+  // line chart
+  lineChart: any
+  barChart: any
+  constructor() {
+    Chart.register(zoomPlugin)
+  }
+  ngOnInit(): void {
+    this.combineData()
+    this.changeSubChart('line')
+  }
+
+  combineData() {
+    this.combinedData = this.donughtLabels.map((label, index) => {
+      return {
+        label: label,
+        backgroundColor: this.donughtBackColor[index],
+        data: this.donughtData[index]
+      };
+    });
+    this.createChart();
+  }
+  public donughtChart: any;
+
+
+  createChart() {
+
+    this.donughtChart = new Chart("MyChart", {
+      type: 'doughnut',
+
+      data: {
+        labels: this.donughtLabels,
+        datasets: [{
+          data: this.donughtData,
+          backgroundColor: this.donughtBackColor,
+          hoverOffset: 4,
+          borderWidth: 2,
+        }]
+      },
+      options: {
+        aspectRatio: 1.5,
+        cutout: '70%',
+        plugins: {
+          legend: {
+            display: false,
+          },
+
+        },
+
+      },
+
+    });
+  }
+
+
   sidebarItems = [
     { _id: 1, name: "Dashboard", icon: "bi bi-grid mx-2" },
     { _id: 2, name: "Instance", icon: "bi bi-person mx-2" },
@@ -32,7 +196,6 @@ export class DashboardComponent {
   reportOpen = false
   logsOpen = false
   dropItemName = ""
-  darkMode = false
   openDropDown(type: any) {
 
     if (type.toLowerCase() === "reports") {
@@ -52,9 +215,7 @@ export class DashboardComponent {
 
   }
 
-  changeMode() {
-    this.darkMode = !this.darkMode
-  }
+
 
   filterOptions = [{
     type: "Timeline",
@@ -77,9 +238,7 @@ export class DashboardComponent {
       "Neetu@comhard.co.in"]
   },]
 
-  trackByType(index: number, filter: any): any {
-    return filter.type;
-  }
+
 
   // renewal Summary data
 
@@ -92,6 +251,29 @@ export class DashboardComponent {
     { renewals: "Expired", subscriptions: 35, users: 80, amount: 375355.00 },
     { renewals: "Deleted", subscriptions: 15, users: 28, amount: 91660.00 }
   ];
+
+
+  graphBtnClicked(type: any) {
+    this.graphType = type
+    this.lineChart.destroy()
+    this.changeSubChart(type)
+  }
+
+  changeSubChart(type: any) {
+    if (this.lineChart) {
+      this.lineChart.destroy()
+    }
+    if (type == 'line') {
+      this.lineChart = new Chart("sub_chart", this.lineChartConfig);
+    }
+    if (type == 'bar') {
+      this.lineChart = new Chart("sub_chart", this.barChartConfig);
+    }
+  }
+
+  changeGraphPeriod(type: any) {
+    this.graphPeriod = type
+  }
 
 
 

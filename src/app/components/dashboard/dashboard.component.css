@@ -7,11 +7,12 @@
 .sidebar-row{
     height: 100vh;
     width: 100vw;
+    
 }
 
-.container{
+/* .container{
     overflow: hidden;
-}
+} */
 
 .logo{
     height: 2rem;
@@ -106,6 +107,7 @@
 }
 
 .dashboard{
+    height: 100%;
     background-color: #f8f5f5;
     overflow-y: scroll;
 }
@@ -114,24 +116,7 @@
     display: none;
 }
 
-.navbar{
-    height: 5rem;
-    border-radius: 1rem;
-    background-color: white;
-}
 
-.navbar img{
-    height: 3rem;
-    width: 3rem;
-    margin-top: 0.3rem;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.navbar i{
-    padding-top: 2rem;
-    cursor: pointer;
-}
 
 .sidebar-logout{
     
@@ -205,4 +190,35 @@
     background-color: #f4efff;
 }
 
+/* .table{
+    margin-bottom: 1rem;
+} */
+
+/* .table-row{
+    height: 4rem;
+} */
+
+.label-value{
+    font-weight: bold;
+}
+
+.label-text{
+    color:grey
+}
+
+.graph-btn{
+    border-radius: 2rem;
+   border:none;
+   font-weight: 500;
+    margin: 0 0.5rem;
+}
+
+.graph-btn-clicked{
+    background-color: #fa896b;
+    color:black;
+}
+
+.card_style{
+    background-color: white; border-radius: 1rem;
+}
 

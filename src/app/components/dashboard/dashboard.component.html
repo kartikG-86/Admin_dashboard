@@ -34,32 +34,11 @@
             </div>
         </div>
         <div class="col-md-10 col-sm-12 dashboard">
+             
+            <!-- Navbar -->
+             <app-navbar></app-navbar>
 
-            <div class="row row-cols-1 mx-xs-2 mx-5 mt-5 navbar p-2" >
-                <div class="col">
-                    <div class="d-flex flex-row justify-content-between ">
-
-                        <div>
-                            <svg  style="cursor: pointer;" class="mx-5 my-3" xmlns="http://www.w3.org/2000/svg" width="1.7rem" height="1.7rem" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.25 7A.75.75 0 0 1 4 6.25h16a.75.75 0 0 1 0 1.5H4A.75.75 0 0 1 3.25 7" clip-rule="evenodd"></path><path fill="currentColor" d="M3.25 12a.75.75 0 0 1 .75-.75h11a.75.75 0 0 1 0 1.5H4a.75.75 0 0 1-.75-.75" opacity=".7"></path><path fill="currentColor" d="M3.25 17a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5H4a.75.75 0 0 1-.75-.75" opacity=".4"></path></svg>
-                        </div>
-                        <div class="">
-                            <span class="mx-3" style="font-size: 16px; color:grey;font-weight: 500;"> <span class="mx-2" style="font-size: 18px;font-weight: 600; color:black">Wallet:</span> 25000</span>
-                            <img class="mx-3" src="https://bootstrapdemos.wrappixel.com/spike/dist/assets/images/profile/user-1.jpg" alt="admin">
-                            <div class="mx-2" style="display:inline-flex;  flex-direction: column;">
-                               <div style="font-size: 18px;font-weight: 600; color:black">Kartik Goyal</div>
-        
-                                <div style="font-size: 16px; color:grey;font-weight: 500;" >Admin</div>
-                            </div>
-                            <div style="display: inline-block ">
-                            <i (click)="changeMode()" style="font-size: 1.5rem;" class="mx-3" [ngClass]="darkMode == false ? 'bi bi-moon ': 'bi bi-brightness-high'"></i>
-                            <!-- <i [ngClass]="" style="font-size: 1.5rem;" class="bi bi-brightness-high"></i> -->
-                        </div>
-                        
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+             
             <div class="row row-cols-1 mx-5 mt-4 filter">
                 <div class="col">
                     <div class=" d-flex flex-row justify-content-left">
@@ -192,9 +171,9 @@
                 </div>
              </div>
 
-             <div class="row row-col-2 g-4 mx-5">
-                <div class="col-8 p-3" style="background-color: white;border-radius: 1rem;">
-                    <div style="font-weight: bold;" class="m-3">
+             <div class="row row-cols-2 g-5 mx-5 py-2">
+                <div class="col-7 card_style" style="z-index: 10;">
+                    <div style="font-weight: bold;" class="m-3 pt-3">
                         Renewal Summary
                     </div>
                     <table class="table">
@@ -210,19 +189,73 @@
                         <tbody>
                            
                                 <tr *ngFor="let renewData of renewalSummary; let i = index;">
-                                  <th scope="row">{{i+1}}</th>
-                                  <td>{{renewData.renewals}}</td>
-                                  <td>{{renewData.subscriptions}}</td>
-                                  <td>{{renewData.users}}</td>
-                                  <td>{{renewData.amount | currency:"INR"}}</td>
+                                  <th class="table-row" scope="row">{{i+1}}</th>
+                                  <td class="table-row">{{renewData.renewals}}</td>
+                                  <td class="table-row">{{renewData.subscriptions}}</td>
+                                  <td class="table-row">{{renewData.users}}</td>
+                                  <td class="table-row">{{renewData.amount | currency:"INR"}}</td>
                                 
                                 </tr>
                             
                         </tbody>
                       </table>
+
                 </div>
-                <div class="col-4"></div>
+                <div class="col-5" style="height: 25rem;">
+                    <div class="card px-3" style="border: none;border-radius: 1rem; height: 100%;">
+                        <div style="font-weight: bold;" class="m-3 pt-3">
+                            Risky Customers
+                         </div>
+                         <div class="d-flex flex-row my-5">
+                            <div  class="align-self-start">
+                                <canvas id="MyChart" >{{ donughtChart }}</canvas>
+                            </div>
+                             <div  class="align-self-center">
+                                @for(data of combinedData;track data){
+                                    <div class="my-3 d-flex flex-row">
+                                        <div class="mx-4" [ngStyle]="{'border-color': data.backgroundColor}"  style=" border-radius: 50%; height: 1.3rem; width: 1.3rem; border: 0.2rem solid; color:white" ></div>
+                                        <div >
+                                           <div class="label-value">{{data.data}}</div>
+                                           <div class="label-text">{{data.label}}</div>
+                                            
+                                        </div>
+                                    </div>
+
+                                }
+                             </div>
+
+                         </div>
+                    </div>
+
+                </div>
+           
              </div>
+
+             <div class="row row-cols-1 mx-5 py-3 my-3 px-3 card_style">
+                <div class="my-4 d-flex flex-row justify-content-between">
+                       
+                    <div class="d-flex flex-row justify-content-left">
+                        <button [ngClass]="graphType == 'line' ? 'graph-btn-clicked':''" (click)="graphBtnClicked('line')" class="btn graph-btn" >Line</button>
+                        <button [ngClass]="graphType == 'bar' ? 'graph-btn-clicked':''" (click)="graphBtnClicked('bar')" class="btn graph-btn">Bar</button>
+                    </div>
+
+                    <div class="d-flex flex-row justify-content-right">
+                        <button [ngClass]="graphPeriod == 'day' ? 'graph-btn-clicked':''" (click) = "changeGraphPeriod('day')"  class="btn graph-btn" >Day</button>
+                        <button [ngClass]="graphPeriod == 'week' ? 'graph-btn-clicked':''"  (click) = "changeGraphPeriod('week')" class="btn graph-btn">Week</button>
+                        <button [ngClass]="graphPeriod == 'month' ? 'graph-btn-clicked':''" (click) = "changeGraphPeriod('month')"  class="btn graph-btn" >Month</button>
+                        <button [ngClass]="graphPeriod == 'year' ? 'graph-btn-clicked':''"  (click) = "changeGraphPeriod('year')" class="btn graph-btn">Year</button>
+                    </div>
+                  
+                </div>
+
+                <div style="font-weight: bold; word-spacing: 0.1em;" class="text-center mb-3">
+                    New v/s Churn Subscription
+                </div>
+                <div>
+                    <canvas height="100" id="sub_chart" >{{lineChart }}</canvas>
+                </div>
+             </div>
+
         </div>
     </div>
 </div>
