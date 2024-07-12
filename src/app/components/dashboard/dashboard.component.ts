@@ -5,11 +5,12 @@ import { MatButtonModule } from '@angular/material/button'
 import Chart from 'chart.js/auto';
 import zoomPlugin from 'chartjs-plugin-zoom';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, MatMenuModule, MatButtonModule, NavbarComponent],
+  imports: [CommonModule, MatMenuModule, MatButtonModule, NavbarComponent, SidebarComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

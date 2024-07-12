@@ -1,0 +1,153 @@
+<div class="container-fluid" style="overflow: hidden;">
+    <div class="row sidebar-row">
+        <div class="col-md-2 d-none d-lg-block py-3">
+            <app-sidebar></app-sidebar>
+        </div>
+       
+        
+        <div class="col-md-10 col-sm-12 dashboard">
+            <!-- Navbar -->
+             <app-navbar></app-navbar>
+
+             <div class="row row-cols-1 mx-5 mt-4 filter">
+                <div class="col">
+                    <div class="d-flex flex-row justify-content-between">
+                        <div class=" d-flex flex-row justify-content-left">
+    
+                            <div class="mt-4 mx-3">
+                                Filter By:
+                            </div>
+    
+                            <div class="mt-3 mx-3 filter-type btn-group">
+                                <button style="border:none" class="btn">
+                                    
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text search-icon" id="basic-addon1"><i class="bi bi-search" style="-webkit-text-stroke: 1px;"></i></span>
+                                        <input type="text" class="form-control search" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                      </div>
+                                      
+                                    </button>
+                                     
+                          </div>
+                     
+                            <div class="mt-3 mx-3 filter-type btn-group">
+                                <button style="border:none" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                 Instance
+                                  </button>
+                                  <ul class="dropdown-menu filter-options">
+                                  
+                                        <li><a class="dropdown-item" >Live Instance</a></li>
+                                        <li><a class="dropdown-item" >Trial Instance</a></li>
+                                        <li><a class="dropdown-item" >Marg Instance</a></li>
+                                        <li><a class="dropdown-item" >Partner Instance</a></li>
+                                
+                                  </ul>
+                              
+                          </div>
+                     
+                        <div class="mt-3 mx-3 d-flex flex-row filter-type" >
+                            <span style="width: 7rem;font-weight: 500; color: grey;" class="mx-0 my-2">Bill From</span>
+                             <input style="border-radius: 2rem;" type="date" name="date" id="date" [(ngModel)]="billFromDate" (ngModelChange)="billFrom($event)">
+                      </div>
+                        <div class="mt-3 mx-3 d-flex flex-row filter-type" style="border: none;">
+                            <span style="width: 7rem;font-weight: 500; color: grey;" class="mx-0 my-2">Bill To</span>
+                             <input style="border-radius: 2rem;height: 2.5rem;" type="date" name="date" id="date" [(ngModel)]="billToDate" (ngModelChange)="billTo($event)">
+                      </div>
+                        </div>
+                        <div>
+                            <button class="btn my-3 reset-btn mx-2">Reset Filter</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="table-responsive-xl mx-5 my-5 p-5" style="background-color: white; border-radius: 1rem;">
+                <h6 style="font-weight: bold;">Showing 1 to 25 of 8624 records</h6>
+                <div class="scrollableTable my-5" style="overflow-x: auto; ">
+                   
+                    <div  style="width: max-content; ;">
+                        @for(column of tableColumnName;track column){
+                            <div class="text-center" [ngClass]="column == 'Customer Email' || column == 'Partner Company' || column == 'Plan Name' ? 'table-width-lg' : 'table-width'" style="display: inline-block; font-weight: bold;">{{column}}</div>
+                        }
+                        <!-- <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Drive Name</div>
+                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Subscription ID</div>
+                        <div class="text-center" style="width: 15rem; display: inline-block; font-weight: bold;">Customer Email</div>
+                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">No. Of Users</div>
+                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Stage</div>
+                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Status</div>
+                        <div class="text-center" style="width: 15rem; display: inline-block; font-weight: bold;">Partner Company</div>
+                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Sales Person</div>
+                        <div class="text-center" style="width: 15rem; display: inline-block; font-weight: bold;">Plan Name</div>
+                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Start Date</div>
+                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Next Billing Date</div>
+                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Company Name</div> -->
+                    </div>
+                    @for(instance of instanceData;track instance){
+                        <div  style="width: max-content; border-bottom: 1px solid #dee2e6;">
+                        @for(column of tableColumnName; track column){
+                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance}}</div>
+                        }
+                            <!-- <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Server Name"]}}</div>
+                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Drive Name"]}}</div>
+                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Subscription ID"]}}</div>
+                            <div class="text-center py-4" style="width: 15rem; display: inline-block; height: 2.5rem;">{{instance["Customer Email"]}}</div>
+                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["No. Of Users"]}}</div>
+                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Stage"]}}</div>
+                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Status"]}}</div>
+                            <div class="text-center py-4" style="width: 15rem; display: inline-block; height: 2.5rem;">{{instance["Partner Company"]}}</div>
+                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Sales Person"]}}</div>
+                            <div class="text-center py-4" style="width: 15rem; display: inline-block; height: 2.5rem;">{{instance["Plan Name"]}}</div>
+                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Start Date"]}}</div>
+                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Next Billing Date"]}}</div>
+                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Company Name"]}}</div> -->
+                        </div>
+                    }
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- <table class="table">
+                        <thead>
+                          <tr>
+                            <th style="width: 10rem;" scope="col">Server Name</th>
+                            <th style="width: 10rem;" scope="col">Drive Name</th>
+                            <th style="width: 10rem;" scope="col">Subscription ID</th>
+                            <th style="width: 10rem;" scope="col">Customer Email</th>
+                            <th style="width: 10rem;" scope="col">No. Of Users</th>
+                            <th style="width: 10rem;" scope="col">Stage</th>
+                            <th style="width: 10rem;" scope="col">Status</th>
+                            <th style="width: 10rem;" scope="col">Partner Company</th>
+                            <th style="width: 10rem;" scope="col">Sales Person</th>
+                            <th style="width: 10rem;" scope="col">Plan Name</th>
+                            <th style="width: 10rem;" scope="col">Start Date</th>
+                            <th style="width: 10rem;" scope="col">Next Billing Date</th>
+                            <th style="width: 10rem;" scope="col">Company Name</th>
+                          </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            @for(instance of instanceData;track instance){
+                                <tr>
+                                 
+                                  <td style="width: 10rem;">{{instance["Server Name"]}}</td>
+                                  <td>{{instance["Drive Name"]}}</td>
+                                  <td>{{instance["Subscription ID"]}}</td>
+                                  <td>{{instance["Customer Email"]}}</td>
+                                  <td>{{instance["No. Of Users"]}}</td>
+                                  <td>{{instance["Stage"]}}</td>
+                                  <td>{{instance["Status"]}}</td>
+                                  <td>{{instance["Partner Company"]}}</td>
+                                  <td>{{instance["Sales Person"]}}</td>
+                                  <td>{{instance["Plan Name"]}}</td>
+                                  <td>{{instance["Start Date"]}}</td>
+                                  <td>{{instance["Next Billing Date"]}}</td>
+                                  <td>{{instance["Company Name"]}}</td>
+                                </tr>
+                            }
+                         
+                        </tbody>
+                      </table> -->
