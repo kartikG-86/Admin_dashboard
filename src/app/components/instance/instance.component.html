@@ -71,25 +71,10 @@
                         @for(column of tableColumnName;track column){
                             <div class="text-center" [ngClass]="column == 'Customer Email' || column == 'Partner Company' || column == 'Plan Name' ? 'table-width-lg' : 'table-width'" style="display: inline-block; font-weight: bold;">{{column}}</div>
                         }
-                        <!-- <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Drive Name</div>
-                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Subscription ID</div>
-                        <div class="text-center" style="width: 15rem; display: inline-block; font-weight: bold;">Customer Email</div>
-                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">No. Of Users</div>
-                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Stage</div>
-                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Status</div>
-                        <div class="text-center" style="width: 15rem; display: inline-block; font-weight: bold;">Partner Company</div>
-                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Sales Person</div>
-                        <div class="text-center" style="width: 15rem; display: inline-block; font-weight: bold;">Plan Name</div>
-                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Start Date</div>
-                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Next Billing Date</div>
-                        <div class="text-center" style="width: 10rem; display: inline-block; font-weight: bold;">Company Name</div> -->
                     </div>
                     @for(instance of instanceData;track instance){
                         <div  style="width: max-content; border-bottom: 1px solid #dee2e6;">
-                        @for(column of tableColumnName; track column){
-                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance}}</div>
-                        }
-                            <!-- <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Server Name"]}}</div>
+                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Server Name"]}}</div>
                             <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Drive Name"]}}</div>
                             <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Subscription ID"]}}</div>
                             <div class="text-center py-4" style="width: 15rem; display: inline-block; height: 2.5rem;">{{instance["Customer Email"]}}</div>
@@ -101,7 +86,7 @@
                             <div class="text-center py-4" style="width: 15rem; display: inline-block; height: 2.5rem;">{{instance["Plan Name"]}}</div>
                             <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Start Date"]}}</div>
                             <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Next Billing Date"]}}</div>
-                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Company Name"]}}</div> -->
+                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Company Name"]}}</div>
                         </div>
                     }
                     
