@@ -1,138 +1,153 @@
-<div class="container-fluid" style="overflow: hidden;">
+<div class="container-fluid" style="overflow: hidden; height: 100vh;">
     <div class="row sidebar-row">
-        <div class="col-md-2 d-none d-lg-block py-3">
+        <div class="col-xl-2  d-none d-xl-block py-3" style="height: 100%;">
             <app-sidebar></app-sidebar>
         </div>
-       
-        
-        <div class="col-md-10 col-sm-12 dashboard">
-            <!-- Navbar -->
-             <app-navbar></app-navbar>
 
-             <div class="row row-cols-1 mx-5 mt-4 filter">
+
+        <div class="col-xl-10 col-12 dashboard">
+            <!-- Navbar -->
+            <app-navbar></app-navbar>
+
+            <!-- Filter HTML-->
+            <div class="row row-cols-1 mx-xxl-5 mx-2 mt-4 d-none d-xl-block filter">
                 <div class="col">
                     <div class="d-flex flex-row justify-content-between">
-                        <div class=" d-flex flex-row justify-content-left">
-    
+                        <div class="d-flex flex-row justify-content-left">
+
                             <div class="mt-4 mx-3">
                                 Filter By:
                             </div>
-    
-                            <div class="mt-3 mx-3 filter-type btn-group">
-                                <button style="border:none" class="btn">
-                                    
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text search-icon" id="basic-addon1"><i class="bi bi-search" style="-webkit-text-stroke: 1px;"></i></span>
-                                        <input type="text" class="form-control search" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                                      </div>
-                                      
-                                    </button>
-                                     
-                          </div>
-                     
-                            <div class="mt-3 mx-3 filter-type btn-group">
-                                <button style="border:none" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                 Instance
-                                  </button>
-                                  <ul class="dropdown-menu filter-options">
-                                  
-                                        <li><a class="dropdown-item" >Live Instance</a></li>
-                                        <li><a class="dropdown-item" >Trial Instance</a></li>
-                                        <li><a class="dropdown-item" >Marg Instance</a></li>
-                                        <li><a class="dropdown-item" >Partner Instance</a></li>
-                                
-                                  </ul>
-                              
-                          </div>
-                     
-                        <div class="mt-3 mx-3 d-flex flex-row filter-type" >
-                            <span style="width: 7rem;font-weight: 500; color: grey;" class="mx-0 my-2">Bill From</span>
-                             <input style="border-radius: 2rem;" type="date" name="date" id="date" [(ngModel)]="billFromDate" (ngModelChange)="billFrom($event)">
-                      </div>
-                        <div class="mt-3 mx-3 d-flex flex-row filter-type" style="border: none;">
-                            <span style="width: 7rem;font-weight: 500; color: grey;" class="mx-0 my-2">Bill To</span>
-                             <input style="border-radius: 2rem;height: 2.5rem;" type="date" name="date" id="date" [(ngModel)]="billToDate" (ngModelChange)="billTo($event)">
-                      </div>
+                            <div class="mt-3 mx-2 filter-type btn-group">
+                                <button style="border:none;" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Instance
+                                </button>
+                                <ul class="dropdown-menu filter-options">
+
+                                    <li><a class="dropdown-item">Live Instance</a></li>
+                                    <li><a class="dropdown-item">Trial Instance</a></li>
+                                    <li><a class="dropdown-item">Marg Instance</a></li>
+                                    <li><a class="dropdown-item">Partner Instance</a></li>
+
+                                </ul>
+
+                            </div>
+
+                            <div class="mt-3 mx-2 d-flex flex-row justify-content-between filter-type">
+                                <span style="width: 7rem;font-weight: 500; color: grey;" class="mx-0 my-2">Bill
+                                    From</span>
+                                <input style="border-radius: 2rem;" type="date" name="date" id="date"
+                                    [(ngModel)]="billFromDate" (ngModelChange)="billFrom($event)">
+                            </div>
+                            <div class="mt-3 mx-3 d-flex flex-row filter-type" style="border-right: none;">
+                                <span style="width: 5rem;font-weight: 500; color: grey;" class="mx-0 my-2">Bill
+                                    To</span>
+                                <input style="border-radius: 2rem;" type="date" name="date" id="date"
+                                    [(ngModel)]="billToDate" (ngModelChange)="billTo($event)">
+                            </div>
                         </div>
-                        <div>
-                            <button class="btn my-3 reset-btn mx-2">Reset Filter</button>
-                        </div>
+                        <button class="btn my-3 reset-btn mx-2 ">Reset Filter</button>
 
                     </div>
                 </div>
 
             </div>
 
-            <div class="table-responsive-xl mx-5 my-5 p-5" style="background-color: white; border-radius: 1rem;">
-                <h6 style="font-weight: bold;">Showing 1 to 25 of 8624 records</h6>
-                <div class="scrollableTable my-5" style="overflow-x: auto; ">
-                   
-                    <div  style="width: max-content; ;">
+            <!--- Table HTML -->
+            <div class=" mx-xxl-5 mx-2 my-4 p-4" style="background-color: white; border-radius: 1rem; overflow:hidden">
+                <div class="d-flex justify-content-between">
+                    <div class="text-center d-block d-xl-none"
+                        style="border-radius: 2rem; height: 2.4rem; width: 2.4rem; color: white; background-color: #0085db;">
+                        <i style="font-size: 1.4rem;" class="bi bi-list"></i>
+                    </div>
+                    <div class=" mx-1 btn-group d-xl-none d-block">
+                        <button style="border:none" class="btn">
+                            <div class="input-group mb-3" style="width: 14rem;">
+                                <span class="input-group-text search-icon" id="basic-addon1"><i class="bi bi-search"
+                                        style="-webkit-text-stroke: 1px;"></i></span>
+                                <input type="text" class="form-control search" placeholder="Username"
+                                    aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <div class=" mx-1 btn-group d-none d-xl-block">
+                        <button style="border:none" class="btn">
+                            <div class="input-group mb-3" style="width: 14rem;">
+                                <span class="input-group-text search-icon" id="basic-addon1"><i class="bi bi-search"
+                                        style="-webkit-text-stroke: 1px;"></i></span>
+                                <input type="text" class="form-control search" placeholder="Username"
+                                    aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <h6 style="font-weight: bold;">Showing {{this.start == 0 ? 1 : this.start}} to {{this.end}} of
+                    {{this.totalPages}}
+                    records</h6>
+                <div class="scrollableTable mt-5" style="overflow-x: auto; height: 40vh; ">
+
+                    <div style="width: max-content; ;">
                         @for(column of tableColumnName;track column){
-                            <div class="text-center" [ngClass]="column == 'Customer Email' || column == 'Partner Company' || column == 'Plan Name' ? 'table-width-lg' : 'table-width'" style="display: inline-block; font-weight: bold;">{{column}}</div>
+                        <div class="text-center"
+                            [ngClass]="column == 'Customer Email' || column == 'Partner Company' || column == 'Plan Name' ? 'table-width-lg' : 'table-width'"
+                            style="display: inline-block; font-weight: bold;">{{column}}</div>
                         }
                     </div>
-                    @for(instance of instanceData;track instance){
-                        <div  style="width: max-content; border-bottom: 1px solid #dee2e6;">
-                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Server Name"]}}</div>
-                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Drive Name"]}}</div>
-                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Subscription ID"]}}</div>
-                            <div class="text-center py-4" style="width: 15rem; display: inline-block; height: 2.5rem;">{{instance["Customer Email"]}}</div>
-                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["No. Of Users"]}}</div>
-                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Stage"]}}</div>
-                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Status"]}}</div>
-                            <div class="text-center py-4" style="width: 15rem; display: inline-block; height: 2.5rem;">{{instance["Partner Company"]}}</div>
-                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Sales Person"]}}</div>
-                            <div class="text-center py-4" style="width: 15rem; display: inline-block; height: 2.5rem;">{{instance["Plan Name"]}}</div>
-                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Start Date"]}}</div>
-                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Next Billing Date"]}}</div>
-                            <div class="text-center py-4" style="width: 10rem; display: inline-block; height: 2.5rem;">{{instance["Company Name"]}}</div>
-                        </div>
-                    }
-                    
+
+                    <div *ngFor="let data of dataPerPage;let i = index"
+                        style="width: max-content; border-bottom: 1px solid #dee2e6; font-size: 0.95rem;">
+                        <div [ngClass]="column == 'Customer Email' || column == 'Partner Company' || column == 'Plan Name' ? 'table-width-lg' : 'table-width'"
+                            *ngFor="let column of tableColumnName;" class="text-center py-4"
+                            style="display: inline-block; height: 2.5rem;">
+                            {{getData(i,column)}} </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row justify-content-end mt-3">
+                    <div class="mx-3 ">
+
+                        <button class="btn " style="border:none">
+                            Rows per page
+                        </button>
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" style="border:none">
+                            {{docPerPage}}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a (click)="rowPerPage($event)" class="dropdown-item">5</a></li>
+                            <li><a (click)="rowPerPage($event)" class="dropdown-item">10</a></li>
+                            <li><a (click)="rowPerPage($event)" class="dropdown-item">15</a></li>
+                        </ul>
+                    </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination" style="color:black">
+
+                            <li disabled="true" class="page-item" (click)="changeNoOfPages('-1')">
+                                <a class="page-link" text-start aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+
+
+                            <li (click)="changePage(firstPage)" class="page-item">
+                                <a class="page-link">{{firstPage}}</a>
+                            </li>
+                            <li (click)="changePage(secondPage)" class="page-item"><a
+                                    class="page-link">{{secondPage}}</a>
+                            </li>
+                            <li (click)="changePage(thirdPage)" class="page-item"><a class="page-link">{{thirdPage}}</a>
+                            </li>
+                            <li (click)="changeNoOfPages('1')" class="page-item">
+                                <a class="page-link" text-start aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
- <!-- <table class="table">
-                        <thead>
-                          <tr>
-                            <th style="width: 10rem;" scope="col">Server Name</th>
-                            <th style="width: 10rem;" scope="col">Drive Name</th>
-                            <th style="width: 10rem;" scope="col">Subscription ID</th>
-                            <th style="width: 10rem;" scope="col">Customer Email</th>
-                            <th style="width: 10rem;" scope="col">No. Of Users</th>
-                            <th style="width: 10rem;" scope="col">Stage</th>
-                            <th style="width: 10rem;" scope="col">Status</th>
-                            <th style="width: 10rem;" scope="col">Partner Company</th>
-                            <th style="width: 10rem;" scope="col">Sales Person</th>
-                            <th style="width: 10rem;" scope="col">Plan Name</th>
-                            <th style="width: 10rem;" scope="col">Start Date</th>
-                            <th style="width: 10rem;" scope="col">Next Billing Date</th>
-                            <th style="width: 10rem;" scope="col">Company Name</th>
-                          </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            @for(instance of instanceData;track instance){
-                                <tr>
-                                 
-                                  <td style="width: 10rem;">{{instance["Server Name"]}}</td>
-                                  <td>{{instance["Drive Name"]}}</td>
-                                  <td>{{instance["Subscription ID"]}}</td>
-                                  <td>{{instance["Customer Email"]}}</td>
-                                  <td>{{instance["No. Of Users"]}}</td>
-                                  <td>{{instance["Stage"]}}</td>
-                                  <td>{{instance["Status"]}}</td>
-                                  <td>{{instance["Partner Company"]}}</td>
-                                  <td>{{instance["Sales Person"]}}</td>
-                                  <td>{{instance["Plan Name"]}}</td>
-                                  <td>{{instance["Start Date"]}}</td>
-                                  <td>{{instance["Next Billing Date"]}}</td>
-                                  <td>{{instance["Company Name"]}}</td>
-                                </tr>
-                            }
-                         
-                        </tbody>
-                      </table> -->

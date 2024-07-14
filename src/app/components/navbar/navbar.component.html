@@ -1,23 +1,61 @@
-<div class="row row-cols-1 mx-xs-2 mx-5 mt-5 navbar p-2" >
-    <div class="col">
+<div class=" mx-xs-2 mx-2 mx-xxl-5 mt-5 navbar p-2">
+    <div class="col-12">
         <div class="d-flex flex-row justify-content-between ">
-
             <div>
-                <svg  style="cursor: pointer;" class="mx-5 my-3" xmlns="http://www.w3.org/2000/svg" width="1.7rem" height="1.7rem" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M3.25 7A.75.75 0 0 1 4 6.25h16a.75.75 0 0 1 0 1.5H4A.75.75 0 0 1 3.25 7" clip-rule="evenodd"></path><path fill="currentColor" d="M3.25 12a.75.75 0 0 1 .75-.75h11a.75.75 0 0 1 0 1.5H4a.75.75 0 0 1-.75-.75" opacity=".7"></path><path fill="currentColor" d="M3.25 17a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5H4a.75.75 0 0 1-.75-.75" opacity=".4"></path></svg>
+                <svg style="cursor: pointer;" class="mx-2 my-3" xmlns="http://www.w3.org/2000/svg" width="1.7rem"
+                    height="1.7rem" viewBox="0 0 24 24">
+                    <path fill="currentColor" fill-rule="evenodd"
+                        d="M3.25 7A.75.75 0 0 1 4 6.25h16a.75.75 0 0 1 0 1.5H4A.75.75 0 0 1 3.25 7" clip-rule="evenodd">
+                    </path>
+                    <path fill="currentColor"
+                        d="M3.25 12a.75.75 0 0 1 .75-.75h11a.75.75 0 0 1 0 1.5H4a.75.75 0 0 1-.75-.75" opacity=".7">
+                    </path>
+                    <path fill="currentColor"
+                        d="M3.25 17a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5H4a.75.75 0 0 1-.75-.75" opacity=".4">
+                    </path>
+                </svg>
             </div>
             <div class="">
-                <span class="mx-3" style="font-size: 16px; color:grey;font-weight: 500;"> <span class="mx-2" style="font-size: 18px;font-weight: 600; color:black">Wallet:</span> 25000</span>
-                <img class="mx-3" src="https://bootstrapdemos.wrappixel.com/spike/dist/assets/images/profile/user-1.jpg" alt="admin">
-                <div class="mx-2" style="display:inline-flex;  flex-direction: column;">
-                   <div style="font-size: 18px;font-weight: 600; color:black">Kartik Goyal</div>
+                <span class="mx-3 fs-6" style="font-size: 16px; color:grey;font-weight: 500;"> <span class="mx-2"
+                        style="font-weight: 600; color:black">Wallet:</span> 25000</span>
 
-                    <div style="font-size: 16px; color:grey;font-weight: 500;" >Admin</div>
+                <img class="mx-3" src="https://bootstrapdemos.wrappixel.com/spike/dist/assets/images/profile/user-1.jpg"
+                    alt="admin" (click)="showUserProfile()">
+
+
+                <div class="user-dropdown" *ngIf="isUserProfile">
+                    <div class=" my-3" style="font-weight: bold; font-size: 1.2rem;">
+                        User Profile
+                    </div>
+                    <div class="user-dropdown-info py-3 d-flex flex-row justify-content-left">
+                        <img class="mx-3"
+                            src="https://bootstrapdemos.wrappixel.com/spike/dist/assets/images/profile/user-1.jpg"
+                            alt="admin">
+                        <div class="mx-2 my-4" style="display:inline-flex;  flex-direction: column;">
+                            <div style="font-size: 18px;font-weight: 600; color:black">Kartik Goyal</div>
+
+                            <div style="font-size: 16px; color:grey;font-weight: 500;">Admin</div>
+                            <div style="color: grey; font-weight: 500;">
+                                <i class="bi bi-envelope me-2"></i>
+                                kartik&#64;comhard.co.in
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn my-3 logout-btn mx-2 ">Logout</button>
+
+                </div>
+                <div class="mx-2 " style="display:inline-flex;  flex-direction: column;">
+                    <div class="d-md-block d-none" style="font-size: 18px;font-weight: 600; color:black">Kartik Goyal
+                    </div>
+
+                    <div class="d-md-block d-none" style="font-size: 16px; color:grey;font-weight: 500;">Admin</div>
                 </div>
                 <div style="display: inline-block ">
-                <i (click)="changeMode()" style="font-size: 1.5rem;" class="mx-3" [ngClass]="darkMode == false ? 'bi bi-moon ': 'bi bi-brightness-high'"></i>
-                <!-- <i [ngClass]="" style="font-size: 1.5rem;" class="bi bi-brightness-high"></i> -->
-            </div>
-            
+                    <i (click)="changeMode()" style="font-size: 1.5rem;" class="mx-3"
+                        [ngClass]="darkMode == false ? 'bi bi-moon ': 'bi bi-brightness-high'"></i>
+                    <!-- <i [ngClass]="" style="font-size: 1.5rem;" class="bi bi-brightness-high"></i> -->
+                </div>
+
             </div>
         </div>
     </div>

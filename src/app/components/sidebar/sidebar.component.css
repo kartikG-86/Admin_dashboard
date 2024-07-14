@@ -21,7 +21,7 @@
 
 .sidebar{
     overflow: hidden;
-    
+    height: 100%;
 }
 
 .logo-heading{
@@ -33,7 +33,7 @@
 
 .sideItem-container{
     overflow-y: scroll;
-    max-height: 75vh;
+   height:  40%;
     padding: 1rem 1rem 1rem 0;
     margin-left: -0.75rem;
 

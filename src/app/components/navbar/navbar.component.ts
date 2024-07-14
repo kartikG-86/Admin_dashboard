@@ -10,7 +10,14 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   darkMode = false
+  isUserProfile=false
   changeMode() {
     this.darkMode = !this.darkMode
   }
+
+  showUserProfile(){
+    this.isUserProfile = !this.isUserProfile
+  }
+
+
 }

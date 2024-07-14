@@ -11,8 +11,12 @@
     display: none;
 }
 
+.sidebar-row{
+    height: 100%;
+}
+
 .filter{
-    height: 5rem;
+    height: max-content;
     border-radius: 1rem;
     background-color: white;
     font-size: 1rem;
@@ -21,10 +25,11 @@
 
 .filter-type{
     height: 2.5rem;
-    padding-right: 1rem;
+    padding-right: 0.5rem;
     border-radius: 0%;
     border-right: 0.1rem solid rgb(209, 208, 208);
     cursor: pointer;
+
     
 }
 
@@ -36,13 +41,10 @@
 
 .filter-options{
     position: relative;
-    /* left:-10rem; */
-    /* top:2rem; */
-    width: max-content;
+    width: fit-content;
     border-radius: 1rem;
     height: max-content;
     padding: 0.7rem;
-
 }
 
 .filter-options li{
@@ -80,7 +82,7 @@ input[type="date"] {
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     width: 100%;
-    max-width: 300px;
+
     box-sizing: border-box;
     border:1px solid rgb(196, 196, 196)
   }
@@ -116,6 +118,10 @@ input[type="date"] {
     
   }
 
+  .scrollableTable{
+    height: 20rem;
+  }
+
 
   .scrollableTable::-webkit-scrollbar-track
 {
@@ -126,6 +132,7 @@ input[type="date"] {
 .scrollableTable::-webkit-scrollbar
 {
 	height: 6px;
+    width: 6px;
 	background-color: white;
 }
 
@@ -139,7 +146,20 @@ input[type="date"] {
 }
 
 .table-width-lg{
-    width: 15rem;
+    width: 14rem;
+}
+
+.pagination li a{
+    color:black;
+    cursor: pointer;
+}
+
+.pagination li{
+    border: none
+}
+
+.pagination{
+    border:none
 }
 
   

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,7 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, } from '@angu
   templateUrl: './instance.component.html',
   styleUrl: './instance.component.css'
 })
-export class InstanceComponent {
+export class InstanceComponent implements OnInit {
   filterOptions = [{
     type: "Timeline",
     options: [
@@ -806,6 +806,22 @@ export class InstanceComponent {
     "Company Name"
   ];
 
+  docPerPage = 5
+  dataPerPage:any[] =[]
+  totalPages = 0
+  displayPages = 3
+  firstPage = 1;
+  secondPage = 2;
+  thirdPage = 3;
+  start = 1
+  end = 5
+
+  constructor(){}
+  
+  ngOnInit(): void {
+    this.dataPerPage = this.instanceData.slice(0, this.docPerPage);
+    this.totalPages = this.instanceData.length
+  }
 
   billFromDate: string | null = null;
   billToDate: string | null = null;
@@ -816,6 +832,41 @@ export class InstanceComponent {
   }
   billTo(event: any): void {
     console.log(this.billToDate);
+  }
+
+  
+  rowPerPage(type:any){
+    this.docPerPage = Number(type.target.innerHTML)
+    this.dataPerPage = this.instanceData.slice(0, this.docPerPage);
+  }
+
+  changePage(type:any){
+     this.start = this.docPerPage * (Number(type) - 1)
+     this.end  = this.start + this.docPerPage
+    this.dataPerPage = this.instanceData.slice(this.start,this.end)
+  }
+
+  changeNoOfPages(type:any){
+    console.log(this.thirdPage)
+    if(type == '1' && this.thirdPage < this.instanceData.length / this.docPerPage){
+      this.firstPage = this.thirdPage + 1
+      this.secondPage = this.firstPage + 1;
+      this.thirdPage = this.secondPage + 1
+      
+    }
+    else if(this.thirdPage > 3 && type== '-1'){
+      this.thirdPage = this.firstPage - 1;
+      this.secondPage = this.thirdPage - 1
+      this.firstPage = this.secondPage -1
+    }
+
+    this.changePage(this.firstPage)
+  }
+
+  getData(index:any,type:any){
+    console.log(type , index)
+    console.log(this.dataPerPage[index])
+    return this.dataPerPage[index][type];
   }
 
 }

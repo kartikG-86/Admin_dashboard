@@ -1,16 +1,16 @@
-<div class="container-fluid" style="overflow: hidden;">
+<div class="container-fluid" style="overflow: hidden; height: 100vh;">
     <div class="row sidebar-row">
         <div class="col-md-2 d-none d-lg-block py-3">
             <app-sidebar></app-sidebar>
         </div>
-       
-        
-        <div class="col-md-10 col-sm-12 dashboard">
-             
-            <!-- Navbar -->
-             <app-navbar></app-navbar>
 
-             
+
+        <div class="col-md-10 col-sm-12 dashboard">
+
+            <!-- Navbar -->
+            <app-navbar></app-navbar>
+
+
             <div class="row row-cols-1 mx-5 mt-4 filter">
                 <div class="col">
                     <div class=" d-flex flex-row justify-content-left">
@@ -18,45 +18,48 @@
                         <div class="mt-4 mx-3">
                             Filter By:
                         </div>
-                      @for(filter of filterOptions;track filter.type){
+                        @for(filter of filterOptions;track filter.type){
                         <div class="mt-3 mx-3 filter-type btn-group">
-                            <button style="border:none" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button style="border:none" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 {{filter.type}}
-                              </button>
-                              <ul class="dropdown-menu filter-options" *ngIf="filter.options">
+                            </button>
+                            <ul class="dropdown-menu filter-options" *ngIf="filter.options">
                                 @for(options of filter.options; track options){
-                                    <li><a class="dropdown-item" href="#">{{options}}</a></li>
+                                <li><a class="dropdown-item" href="#">{{options}}</a></li>
                                 }
-        
-                              </ul>
-                          
-                      </div>
-                    }
-                    <div class="mt-3 mx-3 filter-type btn-group" style="border: none;">
-                        <button style="border:none" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                           Partner Id
-                          </button>
-                          <ul class="dropdown-menu  filter-options">
-                            <li><a class="dropdown-item" href="#">JUGITER Technologies India Pvt Ltd
-                               </a></li>
-                            <li><a class="dropdown-item" href="#"> Shivam Enterprises</a></li>
-        
-                          </ul>
-                      
-                  </div>
+
+                            </ul>
+
+                        </div>
+                        }
+                        <div class="mt-3 mx-3 filter-type btn-group" style="border: none;">
+                            <button style="border:none" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Partner Id
+                            </button>
+                            <ul class="dropdown-menu  filter-options">
+                                <li><a class="dropdown-item" href="#">JUGITER Technologies India Pvt Ltd
+                                    </a></li>
+                                <li><a class="dropdown-item" href="#"> Shivam Enterprises</a></li>
+
+                            </ul>
+
+                        </div>
                     </div>
                 </div>
             </div>
-            
-             <div class="row row-cols-md-3 g-4 px-5 py-4">
+
+            <div class="row row-cols-md-3 g-4 px-5 py-4">
                 <div class="col" style="z-index: 10;">
                     <div class="card" style="border: none;border-radius: 1rem;height: 12.2rem;">
                         <div class="d-flex flex-col justify-content-between">
-                            <div class="text col-lg-4 p-4" style="font-weight: bold; line-height: 1.5rem;" >
+                            <div class="text col-lg-4 p-4" style="font-weight: bold; line-height: 1.5rem;">
                                 Welcome Kartik Goyal
                             </div>
-                            <img src="https://spike-nextjs-pro-main.vercel.app/_next/image?url=%2Fimages%2Fbackgrounds%2Fwelcome-bg.png&w=384&q=75" style="height: 12rem;">
-                                
+                            <img src="https://spike-nextjs-pro-main.vercel.app/_next/image?url=%2Fimages%2Fbackgrounds%2Fwelcome-bg.png&w=384&q=75"
+                                style="height: 12rem;">
+
                         </div>
                     </div>
 
@@ -64,39 +67,42 @@
                 <div class="col">
                     <div class="card" style="border: none;border-radius: 1rem;">
                         <div class="my-4 mx-2">
-                            <span class="text col-lg-6 p-4" style="font-weight: bold;" >
+                            <span class="text col-lg-6 p-4" style="font-weight: bold;">
                                 Total Paid Subscriptions
                             </span>
                             <div>
-                               <div class="text-center my-4" >
-                                 <i class="bi bi-arrow-up-circle p-3" style="border-radius: 50%;background-color: #dffff3;"></i>
-                                <span style="font-weight: bold;" class="mx-2"> 
-                                    8.32 Cr
-                                </span>
-                               </div>
+                                <div class="text-center my-4">
+                                    <i class="bi bi-arrow-up-circle p-3"
+                                        style="border-radius: 50%;background-color: #dffff3;"></i>
+                                    <span style="font-weight: bold;" class="mx-2">
+                                        8.32 Cr
+                                    </span>
+                                </div>
                             </div>
 
                             <div class="d-flex flex-row justify-content-between px-2">
-                               <div class="" >
-                                    <i class="bi bi-sliders2-vertical p-3" style="border-radius: 50%;background-color: #fff6ea;"></i>
-                                    <span style="font-weight: bold;" class="mx-2"> 
-                                    6834
+                                <div class="">
+                                    <i class="bi bi-sliders2-vertical p-3"
+                                        style="border-radius: 50%;background-color: #fff6ea;"></i>
+                                    <span style="font-weight: bold;" class="mx-2">
+                                        6834
                                     </span>
                                     <div style=" color: grey;" class="mt-1 mx-5">
                                         Subscriptions
                                     </div>
-                               </div>
-                               <div class="" >
-                                    <i class="bi bi-people p-3" style="border-radius: 50%;background-color: #e1f5fa;"></i>
-                                    <span style="font-weight: bold;" class="mx-2"> 
-                                    17860
+                                </div>
+                                <div class="">
+                                    <i class="bi bi-people p-3"
+                                        style="border-radius: 50%;background-color: #e1f5fa;"></i>
+                                    <span style="font-weight: bold;" class="mx-2">
+                                        17860
                                     </span>
                                     <div style=" color: grey;" class="mt-1 mx-5">
                                         Users
                                     </div>
-                               </div>
+                                </div>
                             </div>
-                                
+
                         </div>
                     </div>
 
@@ -104,129 +110,140 @@
                 <div class="col">
                     <div class="card" style="border: none;border-radius: 1rem;">
                         <div class="my-4 mx-2">
-                            <span class="text col-lg-6 p-4" style="font-weight: bold;" >
+                            <span class="text col-lg-6 p-4" style="font-weight: bold;">
                                 New Subscriptions Activations
                             </span>
                             <div>
-                               <div class="text-center my-4" >
-                                 <i class="bi bi-arrow-up-circle p-3" style="border-radius: 50%;background-color: #dffff3;"></i>
-                                <span style="font-weight: bold;" class="mx-2"> 
-                                    5.17 Lacs
-                                </span>
-                               </div>
+                                <div class="text-center my-4">
+                                    <i class="bi bi-arrow-up-circle p-3"
+                                        style="border-radius: 50%;background-color: #dffff3;"></i>
+                                    <span style="font-weight: bold;" class="mx-2">
+                                        5.17 Lacs
+                                    </span>
+                                </div>
                             </div>
 
                             <div class="d-flex flex-row justify-content-between px-2">
-                               <div class="" >
-                                    <i class="bi bi-sliders2-vertical p-3" style="border-radius: 50%;background-color: #fff6ea;"></i>
-                                    <span style="font-weight: bold;" class="mx-2"> 
-                                    116
+                                <div class="">
+                                    <i class="bi bi-sliders2-vertical p-3"
+                                        style="border-radius: 50%;background-color: #fff6ea;"></i>
+                                    <span style="font-weight: bold;" class="mx-2">
+                                        116
                                     </span>
                                     <div style=" color: grey;" class="mt-1 mx-5">
                                         Subscriptions
                                     </div>
-                               </div>
-                               <div class="" >
-                                    <i class="bi bi-people p-3" style="border-radius: 50%;background-color: #e1f5fa;"></i>
-                                    <span style="font-weight: bold;" class="mx-2"> 
-                                    204
+                                </div>
+                                <div class="">
+                                    <i class="bi bi-people p-3"
+                                        style="border-radius: 50%;background-color: #e1f5fa;"></i>
+                                    <span style="font-weight: bold;" class="mx-2">
+                                        204
                                     </span>
                                     <div style=" color: grey;" class="mt-1 mx-5">
                                         Users
                                     </div>
-                               </div>
+                                </div>
                             </div>
-                                
+
                         </div>
                     </div>
 
                 </div>
-             </div>
+            </div>
 
-             <div class="row row-cols-2 g-5 mx-5 py-2">
+            <div class="row row-cols-2 g-5 mx-5 py-2">
                 <div class="col-7 card_style" style="z-index: 10;">
                     <div style="font-weight: bold;" class="m-3 pt-3">
                         Renewal Summary
                     </div>
                     <table class="table">
                         <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Renewals</th>
-                            <th scope="col">Subscriptions</th>
-                            <th scope="col">Users</th>
-                            <th scope="col">Amount</th>
-                          </tr>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Renewals</th>
+                                <th scope="col">Subscriptions</th>
+                                <th scope="col">Users</th>
+                                <th scope="col">Amount</th>
+                            </tr>
                         </thead>
                         <tbody>
-                           
-                                <tr *ngFor="let renewData of renewalSummary; let i = index;">
-                                  <th class="table-row" scope="row">{{i+1}}</th>
-                                  <td class="table-row">{{renewData.renewals}}</td>
-                                  <td class="table-row">{{renewData.subscriptions}}</td>
-                                  <td class="table-row">{{renewData.users}}</td>
-                                  <td class="table-row">{{renewData.amount | currency:"INR"}}</td>
-                                
-                                </tr>
-                            
+
+                            <tr *ngFor="let renewData of renewalSummary; let i = index;">
+                                <th class="table-row" scope="row">{{i+1}}</th>
+                                <td class="table-row">{{renewData.renewals}}</td>
+                                <td class="table-row">{{renewData.subscriptions}}</td>
+                                <td class="table-row">{{renewData.users}}</td>
+                                <td class="table-row">{{renewData.amount | currency:"INR"}}</td>
+
+                            </tr>
+
                         </tbody>
-                      </table>
+                    </table>
 
                 </div>
                 <div class="col-5" style="height: 25rem;">
                     <div class="card px-3" style="border: none;border-radius: 1rem; height: 100%;">
                         <div style="font-weight: bold;" class="m-3 pt-3">
                             Risky Customers
-                         </div>
-                         <div class="d-flex flex-row my-5">
-                            <div  class="align-self-start">
-                                <canvas id="MyChart" >{{ donughtChart }}</canvas>
+                        </div>
+                        <div class="d-flex flex-row my-5">
+                            <div class="align-self-start">
+                                <canvas id="MyChart">{{ donughtChart }}</canvas>
                             </div>
-                             <div  class="align-self-center">
+                            <div class="align-self-center">
                                 @for(data of combinedData;track data){
-                                    <div class="my-3 d-flex flex-row">
-                                        <div class="mx-4" [ngStyle]="{'border-color': data.backgroundColor}"  style=" border-radius: 50%; height: 1.3rem; width: 1.3rem; border: 0.2rem solid; color:white" ></div>
-                                        <div >
-                                           <div class="label-value">{{data.data}}</div>
-                                           <div class="label-text">{{data.label}}</div>
-                                            
-                                        </div>
+                                <div class="my-3 d-flex flex-row">
+                                    <div class="mx-4" [ngStyle]="{'border-color': data.backgroundColor}"
+                                        style=" border-radius: 50%; height: 1.3rem; width: 1.3rem; border: 0.2rem solid; color:white">
                                     </div>
+                                    <div>
+                                        <div class="label-value">{{data.data}}</div>
+                                        <div class="label-text">{{data.label}}</div>
+
+                                    </div>
+                                </div>
 
                                 }
-                             </div>
+                            </div>
 
-                         </div>
+                        </div>
                     </div>
 
                 </div>
-           
-             </div>
 
-             <div class="row row-cols-1 mx-5 py-3 my-3 px-3 card_style">
+            </div>
+
+            <div class="row row-cols-1 mx-5 py-3 my-3 px-3 card_style">
                 <div class="my-4 d-flex flex-row justify-content-between">
-                       
+
                     <div class="d-flex flex-row justify-content-left">
-                        <button [ngClass]="graphType == 'line' ? 'graph-btn-clicked':''" (click)="graphBtnClicked('line')" class="btn graph-btn" >Line</button>
-                        <button [ngClass]="graphType == 'bar' ? 'graph-btn-clicked':''" (click)="graphBtnClicked('bar')" class="btn graph-btn">Bar</button>
+                        <button [ngClass]="graphType == 'line' ? 'graph-btn-clicked':''"
+                            (click)="graphBtnClicked('line')" class="btn graph-btn">Line</button>
+                        <button [ngClass]="graphType == 'bar' ? 'graph-btn-clicked':''" (click)="graphBtnClicked('bar')"
+                            class="btn graph-btn">Bar</button>
                     </div>
 
                     <div class="d-flex flex-row justify-content-right">
-                        <button [ngClass]="graphPeriod == 'day' ? 'graph-btn-clicked':''" (click) = "changeGraphPeriod('day')"  class="btn graph-btn" >Day</button>
-                        <button [ngClass]="graphPeriod == 'week' ? 'graph-btn-clicked':''"  (click) = "changeGraphPeriod('week')" class="btn graph-btn">Week</button>
-                        <button [ngClass]="graphPeriod == 'month' ? 'graph-btn-clicked':''" (click) = "changeGraphPeriod('month')"  class="btn graph-btn" >Month</button>
-                        <button [ngClass]="graphPeriod == 'year' ? 'graph-btn-clicked':''"  (click) = "changeGraphPeriod('year')" class="btn graph-btn">Year</button>
+                        <button [ngClass]="graphPeriod == 'day' ? 'graph-btn-clicked':''"
+                            (click)="changeGraphPeriod('day')" class="btn graph-btn">Day</button>
+                        <button [ngClass]="graphPeriod == 'week' ? 'graph-btn-clicked':''"
+                            (click)="changeGraphPeriod('week')" class="btn graph-btn">Week</button>
+                        <button [ngClass]="graphPeriod == 'month' ? 'graph-btn-clicked':''"
+                            (click)="changeGraphPeriod('month')" class="btn graph-btn">Month</button>
+                        <button [ngClass]="graphPeriod == 'year' ? 'graph-btn-clicked':''"
+                            (click)="changeGraphPeriod('year')" class="btn graph-btn">Year</button>
                     </div>
-                  
+
                 </div>
 
                 <div style="font-weight: bold; word-spacing: 0.1em;" class="text-center mb-3">
                     New v/s Churn Subscription
                 </div>
                 <div>
-                    <canvas height="100" id="sub_chart" >{{lineChart }}</canvas>
+                    <canvas height="100" id="sub_chart">{{lineChart }}</canvas>
                 </div>
-             </div>
+            </div>
 
         </div>
     </div>
