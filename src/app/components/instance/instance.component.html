@@ -84,69 +84,81 @@
                         </button>
                     </div>
                 </div>
-                <h6 style="font-weight: bold;">Showing {{this.start == 0 ? 1 : this.start}} to {{this.end}} of
+                @if(this.start < this.end){ <h6 *ngIf="start >= 0 && end <= instanceData.length"
+                    style="font-weight: bold;">Showing {{this.start+1}}
+                    to
+                    {{this.end}} of
                     {{this.totalPages}}
                     records</h6>
-                <div class="scrollableTable mt-5" style="overflow-x: auto; height: 40vh; ">
+                    <div class="scrollableTable mt-5" style="overflow-x: auto; height: 40vh;">
+                        <div style="width: max-content; position: relative;">
+                            <div style="position: sticky; top: 0; background: white; z-index: 1;">
+                                <div class="text-center" *ngFor="let column of tableColumnName"
+                                    [ngClass]="column == 'Customer Email' || column == 'Partner Company' || column == 'Plan Name' ? 'table-width-lg' : 'table-width'"
+                                    style="display: inline-block; font-weight: bold;">
+                                    {{column}}
+                                </div>
+                            </div>
 
-                    <div style="width: max-content; ;">
-                        @for(column of tableColumnName;track column){
-                        <div class="text-center"
-                            [ngClass]="column == 'Customer Email' || column == 'Partner Company' || column == 'Plan Name' ? 'table-width-lg' : 'table-width'"
-                            style="display: inline-block; font-weight: bold;">{{column}}</div>
-                        }
+                            <div *ngFor="let data of dataPerPage; let i = index"
+                                style="width: max-content; border-bottom: 1px solid #dee2e6; font-size: 0.95rem;">
+                                <div [ngClass]="column == 'Customer Email' || column == 'Partner Company' || column == 'Plan Name' ? 'table-width-lg' : 'table-width'"
+                                    *ngFor="let column of tableColumnName;" class="text-center py-4"
+                                    style="display: inline-block; height: 2.5rem;">
+                                    {{getData(i, column)}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div *ngFor="let data of dataPerPage;let i = index"
-                        style="width: max-content; border-bottom: 1px solid #dee2e6; font-size: 0.95rem;">
-                        <div [ngClass]="column == 'Customer Email' || column == 'Partner Company' || column == 'Plan Name' ? 'table-width-lg' : 'table-width'"
-                            *ngFor="let column of tableColumnName;" class="text-center py-4"
-                            style="display: inline-block; height: 2.5rem;">
-                            {{getData(i,column)}} </div>
+                    }
+
+                    @if(this.start >= this.end){
+                    <div *ngIf="dataPerPage.length == 0" class="text-center"
+                        style="font-weight: 500; font-size: 1.4rem;">
+                        Sorry no more data to show
                     </div>
-                </div>
-                <div class="d-flex flex-row justify-content-end mt-3">
-                    <div class="mx-3 ">
+                    }
+                    <div class="d-flex flex-row justify-content-end mt-3">
+                        <div class="mx-3 ">
 
-                        <button class="btn " style="border:none">
-                            Rows per page
-                        </button>
-                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false" style="border:none">
-                            {{docPerPage}}
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a (click)="rowPerPage($event)" class="dropdown-item">5</a></li>
-                            <li><a (click)="rowPerPage($event)" class="dropdown-item">10</a></li>
-                            <li><a (click)="rowPerPage($event)" class="dropdown-item">15</a></li>
-                        </ul>
+                            <button class="btn " style="border:none">
+                                Rows per page
+                            </button>
+                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" style="border:none">
+                                {{docPerPage}}
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a (click)="rowPerPage($event)" class="dropdown-item">5</a></li>
+                                <li><a (click)="rowPerPage($event)" class="dropdown-item">10</a></li>
+                                <li><a (click)="rowPerPage($event)" class="dropdown-item">15</a></li>
+                            </ul>
+                        </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination" style="color:black">
+
+                                <li disabled="true" class="page-item" (click)="goToPage('first')">
+                                    <a class="page-link" text-start aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+
+
+                                <li (click)="changePage('left')" class="page-item">
+                                    <a class="page-link"><i class="bi bi-chevron-left"></i></a>
+                                </li>
+                                <li (click)="changePage('right')" class="page-item"><a class="page-link"><i
+                                            class="bi bi-chevron-right"></i></a>
+                                </li>
+                                <li (click)="goToPage('last')" class="page-item">
+                                    <a class="page-link" text-start aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination" style="color:black">
-
-                            <li disabled="true" class="page-item" (click)="changeNoOfPages('-1')">
-                                <a class="page-link" text-start aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-
-
-                            <li (click)="changePage(firstPage)" class="page-item">
-                                <a class="page-link">{{firstPage}}</a>
-                            </li>
-                            <li (click)="changePage(secondPage)" class="page-item"><a
-                                    class="page-link">{{secondPage}}</a>
-                            </li>
-                            <li (click)="changePage(thirdPage)" class="page-item"><a class="page-link">{{thirdPage}}</a>
-                            </li>
-                            <li (click)="changeNoOfPages('1')" class="page-item">
-                                <a class="page-link" text-start aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
             </div>
         </div>
     </div>
