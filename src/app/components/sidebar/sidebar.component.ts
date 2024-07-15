@@ -13,8 +13,8 @@ export class SidebarComponent {
   sidebarItems = [
     { _id: 1, name: "Dashboard", icon: "bi bi-grid mx-2", href: '/dashboard' },
     { _id: 2, name: "Instance", icon: "bi bi-person mx-2", href: "/instance" },
-    { _id: 3, name: "Cloud User", icon: "bi bi-people mx-2" },
-    { _id: 4, name: "Reseller", icon: "bi bi-tags mx-2" },
+    { _id: 3, name: "Cloud User", icon: "bi bi-people mx-2", href: '/cloud_user' },
+    { _id: 4, name: "Reseller", icon: "bi bi-tags mx-2", href: '/reseller' },
     { _id: 5, name: "Server", icon: "bi bi-database mx-2" },
     { _id: 6, name: "Tally Release", icon: "bi bi-x-diamond mx-2" },
     { _id: 7, name: "Subscription", icon: "bi bi-sliders2-vertical mx-2" },

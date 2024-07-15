@@ -8,13 +8,15 @@ import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { InstanceComponent } from './components/instance/instance.component';
+import { CloudUserComponent } from './components/cloud-user/cloud-user.component';
+import { ResellerComponent } from './components/reseller/reseller.component';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, DashboardComponent, MatMenuModule, MatButtonModule, NavbarComponent, LoginComponent, SidebarComponent, InstanceComponent],
+  imports: [RouterOutlet, DashboardComponent, MatMenuModule, MatButtonModule, NavbarComponent, LoginComponent, SidebarComponent, InstanceComponent, CloudUserComponent, ResellerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
