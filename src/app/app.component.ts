@@ -10,13 +10,14 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { InstanceComponent } from './components/instance/instance.component';
 import { CloudUserComponent } from './components/cloud-user/cloud-user.component';
 import { ResellerComponent } from './components/reseller/reseller.component';
+import { AddResellerComponent } from './components/add-reseller/add-reseller.component';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, DashboardComponent, MatMenuModule, MatButtonModule, NavbarComponent, LoginComponent, SidebarComponent, InstanceComponent, CloudUserComponent, ResellerComponent],
+  imports: [RouterOutlet, DashboardComponent, MatMenuModule, MatButtonModule, NavbarComponent, LoginComponent, SidebarComponent, InstanceComponent, CloudUserComponent, ResellerComponent, AddResellerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

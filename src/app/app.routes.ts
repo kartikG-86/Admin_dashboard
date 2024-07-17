@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { InstanceComponent } from './components/instance/instance.component';
 import { CloudUserComponent } from './components/cloud-user/cloud-user.component';
 import { ResellerComponent } from './components/reseller/reseller.component';
+import { AddResellerComponent } from './components/add-reseller/add-reseller.component';
 
 export const routes: Routes = [
     {
@@ -25,5 +26,8 @@ export const routes: Routes = [
     }, {
         path: 'reseller',
         component: ResellerComponent
+    }, {
+        path: 'add_reseller',
+        component: AddResellerComponent
     }
 ];

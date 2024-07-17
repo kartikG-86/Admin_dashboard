@@ -1,0 +1,220 @@
+<div class="container-fluid" style="overflow: hidden; height: 100vh;">
+    <div class="row sidebar-row">
+        <div class="col-xl-2  d-none d-xl-block py-3" style="height: 100%;">
+            <app-sidebar></app-sidebar>
+        </div>
+
+
+        <div class="col-xl-10 col-12 dashboard">
+            <!-- Navbar -->
+            <app-navbar></app-navbar>
+
+            <!-- Filter HTML-->
+            <div class="mx-md-5 mx-2 my-3"
+                style="max-height: 85vh; overflow-y: scroll; background-color: white; border-radius: 1rem;">
+                <form [formGroup]="addResellerForm" (ngSubmit)="onSubmit()" class="m-md-3 m-1">
+                    <div class="row row-cols-md-2 row-cols-1 m-5 g-md-4 g-0">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="name">Name*</label>
+                                <input id="name" type="text" class="form-control" formControlName="name"
+                                    placeholder="Enter Name" />
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="companyName">Company Name*</label>
+                                <input id="companyName" type="text" class="form-control" formControlName="companyName"
+                                    placeholder="Enter Company name" />
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="mobile">Mobile*</label>
+                                <input id="mobile" type="text" class="form-control" formControlName="mobile"
+                                    placeholder="Enter Mobile Number" />
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="email">Email*</label>
+                                <input id="email" type="email" class="form-control" formControlName="email"
+                                    placeholder="Enter Email Id" />
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="password">Password*</label>
+                                <input id="password" type="password" class="form-control" formControlName="password"
+                                    placeholder="Enter Password" />
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password*</label>
+                                <input id="confirmPassword" type="password" class="form-control"
+                                    formControlName="confirmPassword" placeholder="Confirm Password" />
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="partnerTypes">Partner Types*</label>
+                                <select id="partnerTypes" class="form-control" formControlName="partnerTypes">
+                                    <option value="">Please Select</option>
+                                    <option value="Type 1">Type 1</option>
+                                    <option value="Type 2">Type 2</option>
+                                    <option value="Type 3">Type 3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="accountManager">Account Manager*</label>
+                                <select id="accountManager" class="form-control" formControlName="accountManager">
+                                    <option value="">Select Account Manager</option>
+                                    <option value="Manager 1">Manager 1</option>
+                                    <option value="Manager 2">Manager 2</option>
+                                    <option value="Manager 3">Manager 3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="minOrderLimit">Min Order Limit</label>
+                                <input id="minOrderLimit" type="number" class="form-control"
+                                    formControlName="minOrderLimit" value="50000" />
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="maxTrialLimit">Max Trial Limit</label>
+                                <input id="maxTrialLimit" type="number" class="form-control"
+                                    formControlName="maxTrialLimit" value="3" />
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="country">Country*</label>
+                                <select id="country" class="form-control" formControlName="country">
+                                    <option value="">Select Country</option>
+                                    <option value="Country 1">Country 1</option>
+                                    <option value="Country 2">Country 2</option>
+                                    <option value="Country 3">Country 3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="pincode">Pincode*</label>
+                                <input id="pincode" type="text" class="form-control" formControlName="pincode" />
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input id="city" type="text" class="form-control" formControlName="city"
+                                    placeholder="Enter your city" />
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="state">State*</label>
+                                <select id="state" class="form-control" formControlName="state">
+                                    <option value="">Select State</option>
+                                    <option value="State 1">State 1</option>
+                                    <option value="State 2">State 2</option>
+                                    <option value="State 3">State 3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="zone">Zone</label>
+                                <input id="zone" type="text" class="form-control" formControlName="zone" />
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select id="category" class="form-control" formControlName="category">
+                                    <option value="">Select Category</option>
+                                    <option value="Category 1">Category 1</option>
+                                    <option value="Category 2">Category 2</option>
+                                    <option value="Category 3">Category 3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="pipedriveDealURL">Pipedrive Deal URL</label>
+                                <input id="pipedriveDealURL" type="text" class="form-control"
+                                    formControlName="pipedriveDealUrl" />
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="proactive">Proactive</label>
+                                <select id="proactive" class="form-control" formControlName="proactive">
+                                    <option value="">No</option>
+                                    <option value="Yes">Yes</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="teamSizeSales">Team Size Sales</label>
+                                <input id="teamSizeSales" type="number" class="form-control"
+                                    formControlName="teamSizeSales" placeholder="Enter Sales Team Size" />
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="teamSizeSupport">Team Size Support</label>
+                                <input id="teamSizeSupport" type="number" class="form-control"
+                                    formControlName="teamSizeSupport" placeholder="Enter Support Team Size" />
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="selectPlan">Select Plan*</label>
+                                <select id="selectPlan" class="form-control" formControlName="selectPlan">
+                                    <option value="">Select plan</option>
+                                    <option value="Plan 1">Plan 1</option>
+                                    <option value="Plan 2">Plan 2</option>
+                                    <option value="Plan 3">Plan 3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="d-flex flex-row justify-content-end ">
+                        <button type="submit" class="btn mx-5"
+                            style="background-color: black; color:white">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

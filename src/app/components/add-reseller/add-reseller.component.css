@@ -1,0 +1,28 @@
+* {
+  font-family: "Plus Jakarta Sans", Arial, Helvetica, sans-serif;
+}
+.dashboard {
+  height: 100vh;
+  background-color: #f8f5f5;
+  overflow-y: scroll;
+}
+
+.dashboard::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar-row {
+  height: 100%;
+}
+
+input {
+  margin: 1rem 0;
+}
+
+select {
+  margin: 1rem 0;
+}
+
+label {
+  font-weight: bold;
+}

@@ -807,16 +807,16 @@ export class InstanceComponent implements OnInit {
   ];
 
   docPerPage = 5
-  dataPerPage:any[] =[]
+  dataPerPage: any[] = []
   totalPages = 0
   displayPages = 3
   start = 0
   end = 5
 
-  constructor(){}
-  
+  constructor() { }
+
   ngOnInit(): void {
-    this.getDocPerPages(0,this.docPerPage)
+    this.getDocPerPages(0, this.docPerPage)
     this.totalPages = this.instanceData.length
   }
 
@@ -831,73 +831,64 @@ export class InstanceComponent implements OnInit {
     console.log(this.billToDate);
   }
 
-  
- rowPerPage(type: any) {
-  this.docPerPage = Number(type.target.innerHTML);
-  this.start = 0;
-  this.end = this.docPerPage;
-  this.getDocPerPages(this.start, this.end);
-}
 
-changePage(type: any) {
- 
-  if (type === 'left') {
-   
-    if (this.start > 0) {
-      this.end = this.start;
-      this.start = this.start - this.docPerPage;
-    }
-  } else {
-    
-    if (this.dataPerPage.length === this.docPerPage) {
-      this.start = this.end;
-      this.end = this.start + this.docPerPage;
-    }
-  }
-
-  // Ensure start and end are within valid range
-  this.start = Math.max(0, this.start);
-  this.end = Math.min(this.start + this.docPerPage, this.instanceData.length);
-
-  console.log(this.start, this.end);
-
-    this.getDocPerPages(this.start, this.end);
-  
-}
-
-goToPage(page: string) {
-  if (page === 'first') {
+  rowPerPage(type: any) {
+    this.docPerPage = Number(type.target.innerHTML);
     this.start = 0;
     this.end = this.docPerPage;
-  } else if (page === 'last') {
-    this.end = this.instanceData.length;
-    this.start = this.end - this.docPerPage;
-    if (this.start < 0) this.start = 0; // Adjust if less documents than docPerPage
+    this.getDocPerPages(this.start, this.end);
   }
 
-  // Adjust the start and end for the last page case
-  if (page === 'last' && this.instanceData.length % this.docPerPage !== 0) {
-    this.start = this.instanceData.length - (this.instanceData.length % this.docPerPage);
-    this.end = this.instanceData.length;
+  changePage(type: any) {
+
+    if (type === 'left') {
+
+      if (this.start > 0) {
+        this.end = this.start;
+        this.start = this.start - this.docPerPage;
+      }
+    } else {
+
+      if (this.dataPerPage.length === this.docPerPage) {
+        this.start = this.end;
+        this.end = this.start + this.docPerPage;
+      }
+    }
+
+    // Ensure start and end are within valid range
+    this.start = Math.max(0, this.start);
+    this.end = Math.min(this.start + this.docPerPage, this.instanceData.length);
+
+    console.log(this.start, this.end);
+
+    this.getDocPerPages(this.start, this.end);
+
   }
 
-  console.log(this.start, this.end);
-  this.getDocPerPages(this.start, this.end);
-}
+  goToPage(page: string) {
+    if (page === 'first') {
+      this.start = 0;
+      this.end = this.docPerPage;
+    } else if (page === 'last') {
+      this.end = this.instanceData.length;
+      this.start = this.end - this.docPerPage;
+      if (this.start < 0) this.start = 0;
+    }
+    if (page === 'last' && this.instanceData.length % this.docPerPage !== 0) {
+      this.start = this.instanceData.length - (this.instanceData.length % this.docPerPage);
+      this.end = this.instanceData.length;
+    }
 
-
-
-
-  changeNoOfPages(type:any){
-
+    console.log(this.start, this.end);
+    this.getDocPerPages(this.start, this.end);
   }
 
-  getData(index:any,type:any){
+  getData(index: any, type: any) {
     return this.dataPerPage[index][type];
   }
 
-  getDocPerPages(start:any,end:any){
-    this.dataPerPage = this.instanceData.slice(start,end)
+  getDocPerPages(start: any, end: any) {
+    this.dataPerPage = this.instanceData.slice(start, end)
   }
 
 }
