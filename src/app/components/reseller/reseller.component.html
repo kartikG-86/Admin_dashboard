@@ -27,7 +27,8 @@
           <div>
             <div class="labels-section">
               @for(label of labelSearchData;track label.name){
-              <div class="label text-center my-3" [ngStyle]="{'background-color': label.color}">
+              <div class="label text-center my-3 mx-2"
+                [ngStyle]="{'background-color': label.backgroundColor , 'color':label.color}">
                 {{label.name}}
               </div>
               }
@@ -35,10 +36,14 @@
 
             <div class="label-btn row row-cols-2 g-1 mt-4">
               <div class="col">
-                <button class="btn " style="background-color: #75bae7; font-weight: 600; ">Add Label</button>
+                <button class="btn" type="button" style="background-color: #75bae7; font-weight: 600;"
+                  data-bs-toggle="modal" data-bs-target="#uniqueLabelModal">Add Label</button>
+
+
               </div>
               <div class="col">
-                <button class="btn" style="background-color: #f8c075; font-weight: 600 ">Manage Label</button>
+                <button (click)="navigateToManageLabel()" class="btn"
+                  style="background-color: #f8c075; font-weight: 600 ">Manage Label</button>
               </div>
             </div>
           </div>
@@ -297,54 +302,6 @@
                 <i (click)="modalOpen(i)" class="action-btn-icon bi bi-pencil-square" data-bs-toggle="modal"
                   data-bs-target="#exampleModal"></i>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header" style="border: none;">
-                        <h5 style="font-weight: 500;" class="fs-6" id="exampleModalLabel"> <span
-                            style="font-weight: bold;">Update Status </span> -
-                          {{modalTitle}} </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <form [formGroup]="editForm" (ngSubmit)="onEdit()" class="my-4">
-                          <div class="col">
-                            <div class="mx-1 mt-1 ">
-                              <div class="text-start my-2" style="font-weight: bold;" id="label-addon">Status</div>
-                              <div class="input-group mb-3 search-bar">
-                                <select class="form-control form-select" formControlName="status"
-                                  aria-describedby="label-addon">
-                                  <option value="Pending">Pending</option>
-                                  <option value="Approved">Approved</option>
-                                  <option value="Rejected">Rejected</option>
-                                </select>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="mx-1 mt-4 ">
-                              <div class="text-start my-2" style="font-weight: bold;" id="label-addon">Remark</div>
-                              <div class="input-group mb-3 search-bar">
-                                <input type="text" class="form-control" formControlName="remark" placeholder="Remark..."
-                                  aria-label="Username" aria-describedby="basic-addon1">
-
-                              </div>
-                            </div>
-                          </div>
-                          <div class="modal-footer" style="border:none">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" data-bs-dismiss="modal" class="btn"
-                              style="background-color: #7f56da; color:white">Save
-                              changes</button>
-                          </div>
-                        </form>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
                 }
 
                 }
@@ -410,6 +367,59 @@
           </nav>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Label Modal -->
+<div class="modal fade" id="uniqueLabelModal" tabindex="-1" aria-labelledby="labelModalLabel" aria-hidden="true">
+  <app-add-label (new_label)="newLabel($event)"></app-add-label>
+</div>
+
+
+<!-- Edit Partner Request Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="border: none;">
+        <h5 style="font-weight: 500;" class="fs-6" id="exampleModalLabel"> <span style="font-weight: bold;">Update
+            Status </span> -
+          {{modalTitle}} </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editForm" (ngSubmit)="onEdit()" class="my-4">
+          <div class="col">
+            <div class="mx-1 mt-1 ">
+              <div class="text-start my-2" style="font-weight: bold;" id="label-addon">Status</div>
+              <div class="input-group mb-3 search-bar">
+                <select class="form-control form-select" formControlName="status" aria-describedby="label-addon">
+                  <option value="Pending">Pending</option>
+                  <option value="Approved">Approved</option>
+                  <option value="Rejected">Rejected</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="mx-1 mt-4 ">
+              <div class="text-start my-2" style="font-weight: bold;" id="label-addon">Remark</div>
+              <div class="input-group mb-3 search-bar">
+                <input type="text" class="form-control" formControlName="remark" placeholder="Remark..."
+                  aria-label="Username" aria-describedby="basic-addon1">
+
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer" style="border:none">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" data-bs-dismiss="modal" class="btn"
+              style="background-color: #7f56da; color:white">Save
+              changes</button>
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
 </div>

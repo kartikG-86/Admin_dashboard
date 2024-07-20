@@ -1,15 +1,11 @@
 <div class="container-fluid" style="overflow: hidden; height: 100vh;">
     <div class="row sidebar-row">
-        <div class="col-md-2 d-none d-lg-block py-3">
+        <div class="col-xl-2  d-none d-xl-block py-3" style="height: 100%;">
             <app-sidebar></app-sidebar>
         </div>
-
-
-        <div class="col-md-10 col-sm-12 dashboard">
-
+        <div class="col-xl-10 col-12 dashboard">
             <!-- Navbar -->
             <app-navbar></app-navbar>
-
 
             <div class="row row-cols-1 mx-5 mt-4 filter">
                 <div class="col">
@@ -28,9 +24,7 @@
                                 @for(options of filter.options; track options){
                                 <li><a class="dropdown-item" href="#">{{options}}</a></li>
                                 }
-
                             </ul>
-
                         </div>
                         }
                         <div class="mt-3 mx-3 filter-type btn-group" style="border: none;">

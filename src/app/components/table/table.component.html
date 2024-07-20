@@ -1,0 +1,121 @@
+<div class="d-flex justify-content-between">
+    <div class="text-center d-block d-xl-none"
+        style="border-radius: 2rem; height: 2.4rem; width: 2.4rem; color: white; background-color: #0085db;">
+        <i style="font-size: 1.4rem;" class="bi bi-list"></i>
+    </div>
+    <div class=" mx-1 btn-group d-xl-none d-block">
+        <button style="border:none" class="btn">
+            <div class="input-group mb-3" style="width: 14rem;">
+                <span class="input-group-text search-icon" id="basic-addon1"><i class="bi bi-search"
+                        style="-webkit-text-stroke: 1px;"></i></span>
+                <input type="text" class="form-control search" placeholder="Username" aria-label="Username"
+                    aria-describedby="basic-addon1">
+            </div>
+        </button>
+    </div>
+</div>
+<div class="d-flex justify-content-end">
+    <div class=" mx-1 btn-group d-none d-xl-block">
+        <button style="border:none" class="btn">
+            <div class="input-group mb-3" style="width: 14rem;">
+                <span class="input-group-text search-icon" id="basic-addon1"><i class="bi bi-search"
+                        style="-webkit-text-stroke: 1px;"></i></span>
+                <input type="text" class="form-control search" placeholder="Username" aria-label="Username"
+                    aria-describedby="basic-addon1">
+            </div>
+        </button>
+    </div>
+</div>
+@if(this.start < this.end){ <h6 *ngIf="start >= 0 && end <= data.length" style="font-weight: bold;">Showing
+    {{this.start+1}}
+    to
+    {{this.end}} of
+    {{this.totalPages}}
+    records</h6>
+    <div class="scrollableTable mt-5" style="overflow-x: auto; height: 42vh;">
+        <div style="width: max-content; position: relative;">
+            <div style="position: sticky; top: 0; background: white; z-index: 1;">
+                <div class="text-center" *ngFor="let column of columns"
+                    [ngClass]="column == 'Customer Email' || column == 'Company Name' || column == 'Partner Company' || column == 'Tally Serial No By Customer' || column == 'Domain Name' || column == 'Plan Name' ? 'table-width-lg'  : column == 'Download Link' || column == 'Update Link' ? 'table-width-xl' : 'table-width'"
+                    style="display: inline-block; font-weight: bold;">
+                    {{column}}
+                </div>
+            </div>
+
+            <div *ngFor="let data of dataPerPage; let i = index"
+                style="width: max-content; border-bottom: 1px solid #dee2e6; font-size: 0.95rem; height: 5rem;">
+                <div [ngClass]="column == 'Customer Email' || column == 'Company Name' || column == 'Partner Company' || column == 'Tally Serial No By Customer' || column == 'Domain Name' || column == 'Plan Name' ? 'table-width-lg'  : column == 'Download Link' || column == 'Update Link' ? 'table-width-xl' : 'table-width'"
+                    *ngFor="let column of columns;" class="text-center py-4"
+                    style="display: inline-block; height: 2.5rem; ">
+                    @if(column == "Action"){
+                    <i (click)="editModal(i)" class="bi bi-pencil-square"
+                        style="color:blue; font-size: 1.2rem ;-webkit-text-stroke: 1px; cursor: pointer;"
+                        data-bs-toggle="modal" data-bs-target="#uniqueLabelModal"></i>
+                    } @else {
+                    <span
+                        [ngClass]="column == 'Sub ID' ? getData(i,'Stage') == 'Deleted' ? 'color_red' :'color_blue' : '' "
+                        data-bs-toggle="tooltip" data-bs-placement="top" [title]="getData(i,column)"
+                        [routerLink]="column == 'Sub ID' ? '/subscription-details/'+ getData(i,'Sub ID') : '' ">{{
+                        getData(i,
+                        column)}}</span>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+
+    @if(this.start >= this.end){
+    <div *ngIf="dataPerPage.length == 0" class="text-center" style="font-weight: 500; font-size: 1.4rem;">
+        Sorry no more data to show
+    </div>
+    }
+    <div class="d-flex flex-row justify-content-end mt-3">
+        <div class="mx-3 ">
+
+            <button class="btn " style="border:none">
+                Rows per page
+            </button>
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                style="border:none">
+                {{docPerPage}}
+            </button>
+            <ul class="dropdown-menu">
+                <li><a (click)="rowPerPage($event)" class="dropdown-item">5</a></li>
+                <li><a (click)="rowPerPage($event)" class="dropdown-item">10</a></li>
+                <li><a (click)="rowPerPage($event)" class="dropdown-item">15</a></li>
+            </ul>
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination" style="color:black">
+
+                <li disabled="true" class="page-item" (click)="goToPage('first')">
+                    <a class="page-link" text-start aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+
+                <li (click)="changePage('left')" class="page-item">
+                    <a class="page-link"><i class="bi bi-chevron-left"></i></a>
+                </li>
+                <li (click)="changePage('right')" class="page-item"><a class="page-link"><i
+                            class="bi bi-chevron-right"></i></a>
+                </li>
+                <li (click)="goToPage('last')" class="page-item">
+                    <a class="page-link" text-start aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="modal fade" id="uniqueLabelModal" tabindex="-1" aria-labelledby="labelModalLabel" aria-hidden="true">
+        @if(router.url.includes('server')){
+        <app-server-modal [isEdit]="isEditModal" [editData]="editModalData"></app-server-modal>
+        } @else if(router.url.includes('tally')){
+        <app-tally-release-modal [isEdit]="isEditModal" [editData]="editModalData"></app-tally-release-modal>
+        }
+    </div>

@@ -6,11 +6,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, } from '@angular/forms';
+import { TableComponent } from '../table/table.component';
 
 @Component({
   selector: 'app-instance',
   standalone: true,
-  imports: [SidebarComponent, NavbarComponent, CommonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule, ReactiveFormsModule, FormsModule],
+  imports: [SidebarComponent, NavbarComponent, CommonModule, MatDatepickerModule, MatInputModule, MatNativeDateModule, ReactiveFormsModule, FormsModule, TableComponent],
   templateUrl: './instance.component.html',
   styleUrl: './instance.component.css'
 })

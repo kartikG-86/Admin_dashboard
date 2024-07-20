@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-reseller',
   standalone: true,
-  imports: [ReactiveFormsModule, SidebarComponent, NavbarComponent],
+  imports: [ReactiveFormsModule, SidebarComponent, NavbarComponent, CommonModule],
   templateUrl: './add-reseller.component.html',
   styleUrl: './add-reseller.component.css'
 })
@@ -37,8 +38,35 @@ export class AddResellerComponent {
 
 
   onSubmit() {
-    if (this.addResellerForm.valid) {
+    if (this.addResellerForm.invalid) {
+      this.addResellerForm.markAllAsTouched();
+      return;
+    }
+    else {
       console.log(this.addResellerForm.value);
+      this.addResellerForm.reset({
+        name: '',
+        companyName: '',
+        mobile: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        partnerTypes: '',
+        accountManager: '',
+        minOrderLimit: 50000,
+        maxTrialLimit: 3,
+        country: '',
+        pincode: '',
+        city: '',
+        state: '',
+        zone: '',
+        category: '',
+        pipedriveDealUrl: '',
+        proactive: '',
+        teamSizeSales: '',
+        teamSizeSupport: '',
+        selectPlan: ''
+      });
     }
   }
 }

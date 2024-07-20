@@ -1,0 +1,60 @@
+<div class="modal-dialog modal-xl">
+    <div class="modal-content">
+        <div class="modal-header" style="border-bottom: none;">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">New Tally Release</h1>
+            <button (click)="resetForm()" type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="tallyReleaseForm" (ngSubmit)="onSubmit()" class="m-md-2 m-1">
+                <div class="row row-cols-xl-3 row-cols-1 mx-5 my-2 g-md-4 g-0">
+                    <div class="col mb-3">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input id="fullName" type="text" class="form-control" formControlName="fullName"
+                            placeholder="Version Name">
+                        <div *ngIf="tallyReleaseForm.get('fullName')?.invalid && tallyReleaseForm.get('fullName')?.touched"
+                            class="text-danger">
+                            Full Name is required
+                        </div>
+                    </div>
+
+                    <!-- Download Link Field -->
+                    <div class="col mb-3">
+                        <label for="downloadLink" class="form-label">Download Link</label>
+                        <input id="downloadLink" type="text" class="form-control" formControlName="downloadLink">
+                        <div *ngIf="tallyReleaseForm.get('downloadLink')?.invalid && tallyReleaseForm.get('downloadLink')?.touched"
+                            class="text-danger">
+                            <div *ngIf="tallyReleaseForm.get('downloadLink')?.errors?.['required']">
+                                Download Link is required
+                            </div>
+                            <div *ngIf="tallyReleaseForm.get('downloadLink')?.errors?.['pattern']">
+                                Enter a valid URL for Download Link
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Update Link Field -->
+                    <div class="col mb-3">
+                        <label for="updateLink" class="form-label">Update Link</label>
+                        <input id="updateLink" type="text" class="form-control" formControlName="updateLink">
+                        <div *ngIf="tallyReleaseForm.get('updateLink')?.invalid && tallyReleaseForm.get('updateLink')?.touched"
+                            class="text-danger">
+                            <div *ngIf="tallyReleaseForm.get('updateLink')?.errors?.['required']">
+                                Update Link is required
+                            </div>
+                            <div *ngIf="tallyReleaseForm.get('updateLink')?.errors?.['pattern']">
+                                Enter a valid URL for Update Link
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row justify-content-end mb-3">
+                    <button type="submit" class="btn" style="background-color: black; color: white;">Submit</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>

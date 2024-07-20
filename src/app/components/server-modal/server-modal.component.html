@@ -1,0 +1,111 @@
+<div class="modal-dialog modal-xl">
+    <div class="modal-content">
+        <div class="modal-header" style="border-bottom: none;">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Server</h1>
+            <button (click)="resetForm()" type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="serverForm" (ngSubmit)="onSubmit()" class="m-md-2 m-1">
+                <div class="row row-cols-md-3 row-cols-1 mx-5 my-2 g-md-4 g-0">
+                    <div class="col mb-3">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input id="fullName" type="text" class="form-control" formControlName="fullName">
+                        <div *ngIf="serverForm.get('fullName')?.invalid && serverForm.get('fullName')?.touched"
+                            class="text-danger">
+                            Full Name is required
+                        </div>
+                    </div>
+
+                    <div class="col mb-3">
+                        <label for="ipAddress" class="form-label">IP Address</label>
+                        <input id="ipAddress" type="text" class="form-control" formControlName="ipAddress">
+                        <div *ngIf="serverForm.get('ipAddress')?.invalid && serverForm.get('ipAddress')?.touched"
+                            class="text-danger">
+                            <div *ngIf="serverForm.get('ipAddress')?.errors?.['required']">
+                                IP Address is required
+                            </div>
+                            <div *ngIf="serverForm.get('ipAddress')?.errors?.['pattern']">
+                                Invalid IP address
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col mb-3">
+                        <label for="publicIpAddress" class="form-label">Public IP Address</label>
+                        <input id="publicIpAddress" type="text" class="form-control" formControlName="publicIpAddress">
+                        <div *ngIf="serverForm.get('publicIpAddress')?.invalid && serverForm.get('publicIpAddress')?.touched"
+                            class="text-danger">
+                            Public IP Address is required
+                        </div>
+                    </div>
+
+                    <div class="col mb-3">
+                        <label for="domainName" class="form-label">Domain Name</label>
+                        <input id="domainName" type="text" class="form-control" formControlName="domainName">
+                        <div *ngIf="serverForm.get('domainName')?.invalid && serverForm.get('domainName')?.touched"
+                            class="text-danger">
+                            <div *ngIf="serverForm.get('domainName')?.errors?.['required']">
+                                Domain Name is required
+                            </div>
+                            <div *ngIf="serverForm.get('domainName')?.errors?.['pattern']">
+                                Invalid Domain Name. Please enter a valid URL starting with http:// or https://
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col mb-3">
+                        <label for="port" class="form-label">Port</label>
+                        <input id="port" type="number" class="form-control" formControlName="port">
+                        <div *ngIf="serverForm.get('port')?.invalid && serverForm.get('port')?.touched"
+                            class="text-danger">
+                            Port is required
+                        </div>
+                    </div>
+
+                    <div class="col mb-3">
+                        <label for="selectedExe" class="form-label">Select exe for Api call</label>
+                        <select id="selectedExe" class="form-select" formControlName="exe">
+                            <option value="">Please select</option>
+                            <option value="Old Exe">Old Exe</option>
+                            <option value="New Exe">New Exe</option>
+
+                        </select>
+                        <div *ngIf="serverForm.get('exe')?.invalid && serverForm.get('exe')?.touched"
+                            class="text-danger">
+                            Select exe for Api call is required
+                        </div>
+                    </div>
+
+                    <div class="col mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea style="resize: none;" id="description" class="form-control"
+                            formControlName="description"></textarea>
+                    </div>
+
+                    <div class="col mb-3">
+                        <label for="serverType" class="form-label">Server Type</label>
+                        <select id="selectedExe" class="form-select" formControlName="serverType">
+                            <option value="">Please select</option>
+                            <option value="Trial">Trial</option>
+                            <option value="Live">Live</option>
+                            <option value="Marg">Marg Cloud</option>
+                            <option value="Partner">Partner Cloud</option>
+
+                        </select>
+                        <div *ngIf="serverForm.get('serverType')?.invalid && serverForm.get('serverType')?.touched"
+                            class="text-danger">
+                            Server Type is required
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row justify-content-end mb-3">
+                    <button type="submit" class="btn" style="background-color: black; color: white;">Submit</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>

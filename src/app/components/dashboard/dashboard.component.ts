@@ -6,6 +6,7 @@ import Chart from 'chart.js/auto';
 import zoomPlugin from 'chartjs-plugin-zoom';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -125,7 +126,7 @@ export class DashboardComponent {
   // line chart
   lineChart: any
   barChart: any
-  constructor() {
+  constructor(public route: ActivatedRoute, public router: Router) {
     Chart.register(zoomPlugin)
   }
   ngOnInit(): void {

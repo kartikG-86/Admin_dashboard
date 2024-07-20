@@ -1,0 +1,105 @@
+<div class="container-fluid" style="overflow: hidden; height: 100vh;">
+    <div class="row sidebar-row">
+        <div class="col-xl-2  d-none d-xl-block py-3" style="height: 100%;">
+            <app-sidebar></app-sidebar>
+        </div>
+
+
+        <div class="col-xl-10 col-12 dashboard">
+            <!-- Navbar -->
+            <app-navbar></app-navbar>
+
+
+            <div class="d-flex flex-row justify-content-between my-4 mx-5">
+                <div>
+
+                </div>
+                <div class="input-group mb-3 text-center" style="width: 30rem;height: 3rem;">
+                    <span class="input-group-text" id="basic-addon1"
+                        style="border-top-left-radius: 2rem; border-bottom-left-radius: 2rem;"><i class="bi bi-search"
+                            style="color:black"></i></span>
+                    <input [(ngModel)]="labelSearchValue" (ngModelChange)="onLabelSearch()" type="text"
+                        class="form-control shadow-none" placeholder="Search...">
+                </div>
+                <div>
+                    <button (click)="addLabel()" class="btn add-btn" type="button" style="font-weight: 600;"
+                        data-bs-toggle="modal" data-bs-target="#uniqueLabelModal">Add Label</button>
+
+                </div>
+            </div>
+
+            <div class=" mx-xxl-5 mx-2 my-4 p-4" style="background-color: white; border-radius: 1rem; overflow:hidden">
+                <h5 class="mx-3" style="font-weight: bold;">Label Details</h5>
+                @if(labelData.length > 0){
+
+                <div class="scrollableTable mt-3" style="overflow-x: auto; max-height: 40vh;">
+                    <div style="width: max-content; position: relative;">
+                        <div
+                            style="position: sticky; top: 0; background: white; z-index: 1; border-bottom: 0.1rem solid grey;">
+                            <div class="d-flex px-5 pt-1 pb-3 flex-row justify-content-between">
+                                <div class="table-width text-md-start text-start" style="font-weight: bold; ">Label
+                                    Name</div>
+                                <div class="table-width text-md-center text-start" style="font-weight: bold; ">No Of
+                                    Partners</div>
+                                <div class="table-width text-md-center text-start" style="font-weight: bold; ">
+                                    Background Color</div>
+                                <div class="table-width text-md-center text-start" style="font-weight: bold; ">Font
+                                    Color</div>
+                                <div class="table-width text-md-center text-start" style="font-weight: bold; ">Preview
+                                </div>
+                                <div class="table-width text-center" style="font-weight: bold; ">Action
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngFor="let label of labelData; let i = index"
+                            style="width: max-content; border-bottom: 1px solid #dee2e6; font-size: 0.95rem;">
+
+                            <div class="d-flex px-5 pt-1 pb-3 flex-row justify-content-between">
+                                <div class="table-width text-md-start text-start">
+                                    {{label.name}}
+                                </div>
+                                <div class="table-width text-md-center text-start">3</div>
+                                <div class="table-width text-md-center text-start">
+                                    <span class="px-4 py-2" style="border-radius: 2rem;"
+                                        [ngStyle]="{'background-color':label.backgroundColor, 'padding':'0.5rem','width':'5rem' }">
+
+                                    </span>
+                                </div>
+                                <div class="table-width text-md-center text-start">
+                                    <span class="px-4 py-2" style="border-radius: 2rem;"
+                                        [ngStyle]="{'background-color':label.color, 'padding':'0.5rem','width':'5rem' }">
+
+                                    </span>
+                                </div>
+                                <div class="table-width text-center"
+                                    [ngStyle]="{'background-color':label.backgroundColor , 'color':label.color, 'padding':'0.5rem' }">
+                                    {{label.name}}</div>
+                                <div class="table-width text-center"><i (click)="editLabel(i)"
+                                        style="color:blue; font-size: 1.2rem ;-webkit-text-stroke: 1px; cursor: pointer;"
+                                        class="bi bi-pencil-square" data-bs-toggle="modal"
+                                        data-bs-target="#uniqueLabelModal"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                }
+                @else {
+                <div class="text-center">
+                    <img src="/search_data.avif" alt="search_data">
+                    <h5>Unlock data insights by searching any field!</h5>
+                </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Add Label Modal -->
+<div class="modal fade" id="uniqueLabelModal" tabindex="-1" aria-labelledby="labelModalLabel" aria-hidden="true">
+    <app-add-label [editDetails]="editLabelDetails" (new_label)="newLabel($event)"></app-add-label>
+</div>

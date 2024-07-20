@@ -19,6 +19,10 @@
                                 <label for="name">Name*</label>
                                 <input id="name" type="text" class="form-control" formControlName="name"
                                     placeholder="Enter Name" />
+                                <div *ngIf="addResellerForm.controls['name'].touched && addResellerForm.controls['name'].invalid"
+                                    class="text-danger">
+                                    Name is required.
+                                </div>
                             </div>
                         </div>
 
@@ -27,6 +31,10 @@
                                 <label for="companyName">Company Name*</label>
                                 <input id="companyName" type="text" class="form-control" formControlName="companyName"
                                     placeholder="Enter Company name" />
+                                <div *ngIf="addResellerForm.controls['companyName'].touched && addResellerForm.controls['companyName'].invalid"
+                                    class="text-danger">
+                                    Company Name is required.
+                                </div>
                             </div>
                         </div>
 
@@ -35,6 +43,10 @@
                                 <label for="mobile">Mobile*</label>
                                 <input id="mobile" type="text" class="form-control" formControlName="mobile"
                                     placeholder="Enter Mobile Number" />
+                                <div *ngIf="addResellerForm.controls['mobile'].touched && addResellerForm.controls['mobile'].invalid"
+                                    class="text-danger">
+                                    Valid mobile number is required.
+                                </div>
                             </div>
                         </div>
 
@@ -43,6 +55,10 @@
                                 <label for="email">Email*</label>
                                 <input id="email" type="email" class="form-control" formControlName="email"
                                     placeholder="Enter Email Id" />
+                                <div *ngIf="addResellerForm.controls['email'].touched && addResellerForm.controls['email'].invalid"
+                                    class="text-danger">
+                                    Valid email is required.
+                                </div>
                             </div>
                         </div>
 
@@ -51,6 +67,10 @@
                                 <label for="password">Password*</label>
                                 <input id="password" type="password" class="form-control" formControlName="password"
                                     placeholder="Enter Password" />
+                                <div *ngIf="addResellerForm.controls['password'].touched && addResellerForm.controls['password'].invalid"
+                                    class="text-danger">
+                                    Password is required.
+                                </div>
                             </div>
                         </div>
 
@@ -59,6 +79,10 @@
                                 <label for="confirmPassword">Confirm Password*</label>
                                 <input id="confirmPassword" type="password" class="form-control"
                                     formControlName="confirmPassword" placeholder="Confirm Password" />
+                                <div *ngIf="addResellerForm.controls['confirmPassword'].touched && addResellerForm.controls['confirmPassword'].invalid"
+                                    class="text-danger">
+                                    Confirm Password is required.
+                                </div>
                             </div>
                         </div>
 
@@ -71,6 +95,10 @@
                                     <option value="Type 2">Type 2</option>
                                     <option value="Type 3">Type 3</option>
                                 </select>
+                                <div *ngIf="addResellerForm.controls['partnerTypes'].touched && addResellerForm.controls['partnerTypes'].invalid"
+                                    class="text-danger">
+                                    Partner Type is required.
+                                </div>
                             </div>
                         </div>
 
@@ -83,6 +111,10 @@
                                     <option value="Manager 2">Manager 2</option>
                                     <option value="Manager 3">Manager 3</option>
                                 </select>
+                                <div *ngIf="addResellerForm.controls['accountManager'].touched && addResellerForm.controls['accountManager'].invalid"
+                                    class="text-danger">
+                                    Account Manager is required.
+                                </div>
                             </div>
                         </div>
 
@@ -111,6 +143,10 @@
                                     <option value="Country 2">Country 2</option>
                                     <option value="Country 3">Country 3</option>
                                 </select>
+                                <div *ngIf="addResellerForm.controls['country'].touched && addResellerForm.controls['country'].invalid"
+                                    class="text-danger">
+                                    Country is required.
+                                </div>
                             </div>
                         </div>
 
@@ -118,6 +154,10 @@
                             <div class="form-group">
                                 <label for="pincode">Pincode*</label>
                                 <input id="pincode" type="text" class="form-control" formControlName="pincode" />
+                                <div *ngIf="addResellerForm.controls['pincode'].touched && addResellerForm.controls['pincode'].invalid"
+                                    class="text-danger">
+                                    Pincode is required.
+                                </div>
                             </div>
                         </div>
 
@@ -138,6 +178,10 @@
                                     <option value="State 2">State 2</option>
                                     <option value="State 3">State 3</option>
                                 </select>
+                                <div *ngIf="addResellerForm.controls['state'].touched && addResellerForm.controls['state'].invalid"
+                                    class="text-danger">
+                                    State is required.
+                                </div>
                             </div>
                         </div>
 
@@ -174,7 +218,6 @@
                                 <select id="proactive" class="form-control" formControlName="proactive">
                                     <option value="">No</option>
                                     <option value="Yes">Yes</option>
-
                                 </select>
                             </div>
                         </div>
@@ -184,6 +227,10 @@
                                 <label for="teamSizeSales">Team Size Sales</label>
                                 <input id="teamSizeSales" type="number" class="form-control"
                                     formControlName="teamSizeSales" placeholder="Enter Sales Team Size" />
+                                <div *ngIf="addResellerForm.controls['teamSizeSales'].touched && addResellerForm.controls['teamSizeSales'].invalid"
+                                    class="text-danger">
+                                    Team Size Sales is required.
+                                </div>
                             </div>
                         </div>
 
@@ -192,6 +239,10 @@
                                 <label for="teamSizeSupport">Team Size Support</label>
                                 <input id="teamSizeSupport" type="number" class="form-control"
                                     formControlName="teamSizeSupport" placeholder="Enter Support Team Size" />
+                                <div *ngIf="addResellerForm.controls['teamSizeSupport'].touched && addResellerForm.controls['teamSizeSupport'].invalid"
+                                    class="text-danger">
+                                    Team Size Support is required.
+                                </div>
                             </div>
                         </div>
 
@@ -204,16 +255,20 @@
                                     <option value="Plan 2">Plan 2</option>
                                     <option value="Plan 3">Plan 3</option>
                                 </select>
+                                <div *ngIf="addResellerForm.controls['selectPlan'].touched && addResellerForm.controls['selectPlan'].invalid"
+                                    class="text-danger">
+                                    Select Plan is required.
+                                </div>
                             </div>
                         </div>
 
                     </div>
-                    <div class="d-flex flex-row justify-content-end ">
+                    <div class="d-flex flex-row justify-content-end">
                         <button type="submit" class="btn mx-5"
                             style="background-color: black; color:white">Submit</button>
                     </div>
-
                 </form>
+
             </div>
         </div>
     </div>

@@ -2,14 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
-import { FormGroup, FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-
+import { FormGroup, FormControl, ReactiveFormsModule, FormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { NgxColorsModule } from 'ngx-colors';
+import { AddLabelComponent } from '../add-label/add-label.component';
+import { ManageLabelComponent } from '../manage-label/manage-label.component';
 
 @Component({
   selector: 'app-reseller',
   standalone: true,
-  imports: [SidebarComponent, NavbarComponent, CommonModule, ReactiveFormsModule, FormsModule, RouterLink],
+  imports: [SidebarComponent, NavbarComponent, CommonModule, ReactiveFormsModule, FormsModule, RouterLink, NgxColorsModule, AddLabelComponent, ManageLabelComponent],
   templateUrl: './reseller.component.html',
   styleUrl: './reseller.component.css'
 })
@@ -27,6 +29,11 @@ export class ResellerComponent implements OnInit {
   modalTitle = ""
   modalStatus: string = ''
   modalIndex!: any
+  labelPreview: any = {
+    name: "",
+    color: '',
+    backgroundColor: ''
+  }
 
   accountManagers = [
     "Olivia",
@@ -669,20 +676,22 @@ export class ResellerComponent implements OnInit {
 
 
 
-  currentSection = "partnersRequest"
+  currentSection = "partners"
   labelSearchValue: string = '';
   labelSearchData: any[] = []
 
-  labels = [{
+  labels: any[] = [{
     name: "Re-active",
-    color: '#ffede9'
+    backgroundColor: '#ffede9',
+    color: "black"
   }, {
     name: "Trial",
-    color: '#dffff3'
+    backgroundColor: '#dffff3',
+    color: 'black'
   }]
   status = ["Suspend", "Active"]
 
-  constructor() {
+  constructor(private router: Router) {
     this.labelSearchData = [...this.labels]
     if (this.currentSection == "partners") {
       this.data = [...this.partnersData]
@@ -698,6 +707,13 @@ export class ResellerComponent implements OnInit {
   ngOnInit(): void {
     this.getDocPerPages(0, this.docPerPage)
     this.totalPages = this.data.length
+
+    this.labelForm.valueChanges.subscribe(value => {
+      this.labelPreview.name = value.labelName
+      this.labelPreview.color = value.color
+      this.labelPreview.backgroundColor = value.backgroundColor
+      console.log(value)
+    });
   }
 
   searchForm = new FormGroup({
@@ -720,6 +736,14 @@ export class ResellerComponent implements OnInit {
     status: new FormControl(''),
     remark: new FormControl('')
   })
+
+  labelForm = new FormGroup({
+    labelName: new FormControl('', Validators.required),
+    backgroundColor: new FormControl('', Validators.required),
+    color: new FormControl('', Validators.required)
+  })
+
+  // color = "black"
 
   openSearch() {
     this.isSearch = !this.isSearch
@@ -849,6 +873,26 @@ export class ResellerComponent implements OnInit {
     this.getDocPerPages(0, this.docPerPage)
   }
 
+  selectedColor: string = '#000000';
+
+  onColorChange(event: any): void {
+    console.log(event.color.hex)
+    this.labelForm.controls.color.setValue(event.color.hex);
+  }
+
+  newLabel(labelDetails: any) {
+    this.labels.push({
+      name: labelDetails.labelName,
+      backgroundColor: labelDetails.backgroundColor,
+      color: labelDetails.color
+    })
+    this.labelSearchData = [...this.labels]
+  }
+
+  navigateToManageLabel() {
+    const encodedData = encodeURIComponent(JSON.stringify(this.labels));
+    this.router.navigate(['/manage_label', encodedData]);
+  }
 
 
 

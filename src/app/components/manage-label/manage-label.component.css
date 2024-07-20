@@ -1,0 +1,66 @@
+* {
+    font-family: "Plus Jakarta Sans", Arial, Helvetica, sans-serif;
+  }
+  .dashboard {
+    height: 100vh;
+    background-color: #f8f5f5;
+    overflow-y: scroll;
+  }
+  
+  .dashboard::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .sidebar-row {
+    height: 100%;
+  }
+
+  .add-btn {
+    background-color: #c3aff3;
+    font-weight: 600;
+  }
+
+  input{
+    border-radius: 2rem; border-left: none; border-top-left-radius: 0; border-bottom-left-radius: 0;
+    outline: none;
+    box-shadow: grey;
+  }
+  .input-group input:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .input-group .form-control:focus {
+    outline: none; /* Remove outline for inputs inside input groups */
+  }
+
+  .scrollableTable {
+    max-height: 80vh;
+   
+  }
+  
+  .scrollableTable::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px grey;
+    background-color: white;
+  }
+  
+  .scrollableTable::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+    background-color: white;
+  }
+  
+  .scrollableTable::-webkit-scrollbar-thumb {
+    background-color: grey;
+  }
+  
+  .table-width {
+    width: 13.5rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+   
+  }
+  
+  .table-width-lg {
+    width: 14rem;
+  }

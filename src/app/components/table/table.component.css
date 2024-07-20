@@ -1,0 +1,66 @@
+.scrollableTable{
+    height: 20rem;
+  }
+
+
+  .scrollableTable::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px grey;
+	background-color: white;
+}
+
+.scrollableTable::-webkit-scrollbar
+{
+	height: 6px;
+    width: 6px;
+	background-color: white;
+}
+
+.scrollableTable::-webkit-scrollbar-thumb
+{
+	background-color: grey;
+}
+
+.table-width{
+    width: 10.7rem;
+}
+
+.table-width-lg{
+    width: 14rem;
+}
+
+.table-width-xl{
+    width: 26.4rem;
+    margin: 0 0.5rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.pagination li a{
+    color:black;
+    cursor: pointer;
+}
+
+.pagination li{
+    border: none
+}
+
+.pagination{
+    border:none
+}
+
+.color_red{
+    color:red;
+    cursor: pointer;
+
+}
+
+.color_blue{
+    color:blue;
+    cursor: pointer;
+}
+
+.color_green{
+    color:green
+}
