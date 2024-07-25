@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu'
 import { MatButtonModule } from '@angular/material/button'
 import Chart from 'chart.js/auto';
@@ -15,8 +15,9 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnChanges {
 
+  @Input() mode: any
   donughtLabels = [
     'Subscriptions',
     'Customers',
@@ -133,6 +134,12 @@ export class DashboardComponent {
     this.combineData()
     this.changeSubChart('line')
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.mode, "From Dashboard")
+  }
+
+
 
   combineData() {
     this.combinedData = this.donughtLabels.map((label, index) => {

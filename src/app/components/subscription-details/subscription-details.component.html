@@ -1,167 +1,233 @@
-<div class="container-fluid" style="overflow: hidden; height: 100vh;">
-    <div class="row sidebar-row">
-        <div class="col-xl-2  d-none d-xl-block py-3" style="height: 100%;">
-            <app-sidebar></app-sidebar>
+<div class="mx-md-5 mx-2 my-3 p-4 mainContainer"
+    style="background-color: white; height: 85%;border-radius: 1rem; overflow: hidden; overflow-y: scroll;">
+
+    <h4 class="mb-4">Tally On Cloud - Yearly</h4>
+
+    <div class="d-flex flex-row justify-content-between">
+        <div>
+            <span style="font-weight: 500; color:grey;">#{{subId}}</span>
+            <span class=" mx-4 px-3 py-2"
+                style="background-color: green; color:white;font-weight: 500; border-radius: 2rem;">Live</span>
         </div>
-        <div class="col-xl-10 col-12 dashboard">
-            <!-- Navbar -->
-            <app-navbar></app-navbar>
+        <button class="btn" style="background-color: #e0d7f7; font-weight: 600;">Action <i
+                class=" ms-3 bi bi-chevron-down"></i></button>
+    </div>
 
-            <div class="mx-md-5 mx-2 my-3 p-4 mainContainer"
-                style="background-color: white; height: 85%;border-radius: 1rem; overflow: hidden; overflow-y: scroll;">
+    <div class="d-flex flex-row justify-content-start my-4 pb-1">
+        @for(section of sections;track section){
+        <div (click)="changeSection(section)" class="mx-2 section fs-6"
+            [ngClass]="selectSection == section ? 'change_section' : ''">
+            {{section}}</div>
+        }
+    </div>
 
-                <h4 class="mb-4">Tally On Cloud - Yearly</h4>
 
-                <div class="d-flex flex-row justify-content-between">
-                    <div>
-                        <span style="font-weight: 500; color:grey;">#{{subId}}</span>
-                        <span class=" mx-4 px-3 py-2"
-                            style="background-color: green; color:white;font-weight: 500; border-radius: 2rem;">Live</span>
-                    </div>
-                    <button class="btn" style="background-color: #e0d7f7; font-weight: 600;">Action <i
-                            class=" ms-3 bi bi-chevron-down"></i></button>
+    <div class="row">
+        @if(selectSection == "Overview"){
+        <div class="col-xl-4 col-12 " style="background-color: #f0f0f0; border-radius: 1rem;">
+            <h5 class="mx-3 my-3">COMHARD</h5>
+            <button class="btn" style="background-color: #e0d7f7; font-weight: 600; border-radius: 2rem;">Login as a
+                Customer
+            </button>
+            <div class="d-flex flex-row justify-content-left my-4 mx-3">
+                <div>
+                    <i class="bi bi-person-bounding-box" style="font-size: 2rem;"></i>
                 </div>
-
-                <div class="d-flex flex-row justify-content-start my-4 pb-1">
-                    @for(section of sections;track section){
-                    <div (click)="changeSection(section)" class="mx-2 section fs-6"
-                        [ngClass]="selectSection == section ? 'change_section' : ''">
-                        {{section}}</div>
-                    }
-                </div>
-
-                <div class="row">
-                    <div class="col-xl-4 col-12 " style="background-color: #f0f0f0; border-radius: 1rem;">
-                        <h5 class="mx-3 my-3">COMHARD</h5>
-                        <button class="btn"
-                            style="background-color: #e0d7f7; font-weight: 600; border-radius: 2rem;">Login as a
-                            Customer
-                        </button>
-                        <div class="d-flex flex-row justify-content-left my-4 mx-3">
-                            <div>
-                                <i class="bi bi-person-bounding-box" style="font-size: 2rem;"></i>
-                            </div>
-                            <div class="mx-4">
-                                <div class="d-flex flex-column">
-                                    <span style="font-weight: 600;">Kartik Goyal</span>
-                                    <span style="color: grey;font-weight: 500;">kartikgoyal0852gmail.com</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mx-3 my-4 py-3" style=" border-bottom:0.1rem solid grey">
-                            <span style="font-weight: 600;">Address</span>
-                        </div>
-
-                        <div class="mx-3 my-4 py-3 d-flex flex-row justify-content-between" style="height: 7rem;">
-                            <div style="font-weight: 600; width: 9rem;">Billing Address : </div>
-                            <div style="font-weight: 400; color:grey" class="mx-3">9700 Schultz Shores, Katelynnstead,
-                                Maryland - 13685, Bolivia</div>
-                        </div>
-
-                        <div class="mx-3 my-4 py-3" style=" border-bottom:0.1rem solid grey">
-                            <span style="font-weight: 600;">Subscription Options</span>
-                        </div>
-
-                        <div>
-                            @for(detail of subscriptionDetails; track detail.key){
-                            <div class="d-flex flex-row justify-content-between mx-3 my-4">
-                                <div style="font-weight: 600;"> {{detail.key}} </div>
-                                <div style="color:grey"> {{detail.value}} </div>
-                            </div>
-                            }
-                        </div>
+                <div class="mx-4">
+                    <div class="d-flex flex-column">
+                        <span style="font-weight: 600;">Kartik Goyal</span>
+                        <span style="color: grey;font-weight: 500;">kartikgoyal0852gmail.com</span>
                     </div>
-                    <div class="col-xl-8 col-12">
-                        <div class="scrollableTable mt-5" style="overflow-x: auto;">
-                            <div style="width: max-content; position: relative;">
-                                <div style="position: sticky; top: 0; background: white; z-index: 1;">
-                                    <div class="text-center table-width-xl"
-                                        style=" display: inline-block; font-weight: bold;">
-                                        <div>Subscription Amount</div>
-
-                                        <div class="my-2" style="color:grey; font-weight: 600;">₹ 6000</div>
-                                        <div style="color: grey; font-weight: 500;">1 year (s)</div>
-
-                                    </div>
-                                    <div class="text-center table-width-xl"
-                                        style=" display: inline-block; font-weight: bold;">
-                                        Next Billing Date
-                                    </div>
-                                    <div class="text-center table-width-xl"
-                                        style=" display: inline-block; font-weight: bold;">
-                                        Last Billing Date
-                                    </div>
-                                    <div class="text-center table-width-xl"
-                                        style=" display: inline-block; font-weight: bold; color:red">
-                                        Expiry on <i class=" mx-2 bi bi-info-circle"></i>
-                                    </div>
-
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="row row-cols-5 g-4 mt-4 py-3 mx-1" style="border-bottom: 0.2rem solid black;">
-                            <div class="text-center" style="color:grey; font-weight: 500; font-size: 0.9rem;">Plan &
-                                Addon Details</div>
-                            <div class="text-center" style="color:grey; font-weight: 500; font-size: 0.9rem;">Qty/No Of
-                                Users</div>
-                            <div class="text-center" style="color:grey; font-weight: 500; font-size: 0.9rem;">Rate</div>
-                            <div class="text-center" style="color:grey; font-weight: 500; font-size: 0.9rem;">Tax</div>
-                            <div class="text-center" style="color:grey; font-weight: 500; font-size: 0.9rem;">Amount
-                            </div>
-                        </div>
-                        <div class="row row-cols-5 g-4  py-3 mx-1"
-                            style="border-bottom: 0.1rem solid rgb(206, 206, 206);">
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">Tally On
-                                Cloud - Yearly</div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">1</div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">₹6,000
-                            </div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">₹1,080
-                            </div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">₹6,000
-                            </div>
-                        </div>
-                        <div class="row row-cols-5 g-4  py-3 mx-1"
-                            style="border-bottom: 0.1rem solid rgb(206, 206, 206);">
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;"></div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;"></div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">
-                            </div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">Sub Total
-                            </div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">₹6,000
-                            </div>
-                        </div>
-                        <div class="row row-cols-5 g-4  py-3 mx-1"
-                            style="border-bottom: 0.1rem solid rgb(206, 206, 206);">
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;"></div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;"></div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">
-                            </div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">IGST18(18%)
-                            </div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">₹1,080
-                            </div>
-                        </div>
-                        <div class="row row-cols-5 g-4  py-3 mx-1"
-                            style="border-bottom: 0.1rem solid rgb(206, 206, 206);">
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;"></div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;"></div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">
-                            </div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">TOTAL
-                            </div>
-                            <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">₹7,080
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+            </div>
 
+            <div class="mx-3 my-4 py-3" style=" border-bottom:0.1rem solid grey">
+                <span style="font-weight: 600;">Address</span>
+            </div>
+
+            <div class="mx-3 my-4 py-3 d-flex flex-row justify-content-between" style="height: 7rem;">
+                <div style="font-weight: 600; width: 9rem;">Billing Address : </div>
+                <div style="font-weight: 400; color:grey" class="mx-3">9700 Schultz Shores, Katelynnstead,
+                    Maryland - 13685, Bolivia</div>
+            </div>
+
+            <div class="mx-3 my-4 py-3" style=" border-bottom:0.1rem solid grey">
+                <span style="font-weight: 600;">Subscription Options</span>
+            </div>
+
+            <div>
+                @for(detail of subscriptionDetails; track detail.key){
+                <div class="d-flex flex-row justify-content-between mx-3 my-4">
+                    <div style="font-weight: 600;"> {{detail.key}} </div>
+                    <div style="color:grey"> {{detail.value}} </div>
+                </div>
+                }
             </div>
         </div>
+        <div class="col-xl-8 col-12">
+            <div class="scrollableTable mt-5" style="overflow-x: auto;">
+                <div style="width: max-content; position: relative;">
+                    <div style="position: sticky; top: 0; background: white; z-index: 1;">
+                        <div class="text-center table-width-xl" style=" display: inline-block; font-weight: bold;">
+                            <div class="d-flex flex-column">
+
+                                <div>Subscription Amount</div>
+
+                                <div class="my-2" style="color:grey; font-weight: 600;">₹ 6000</div>
+                                <div style="color: grey; font-weight: 500;">1 year (s)</div>
+                            </div>
+
+                        </div>
+                        <div class="text-center table-width-xl" style=" display: inline-block; font-weight: bold;">
+                            <div class="d-flex flex-column">
+
+                                <div> Next Billing Date</div>
+
+                                <div class="my-2" style="color:grey; font-weight: 600;">22 Aug 2024</div>
+                            </div>
+
+                        </div>
+                        <div class="text-center table-width-xl" style=" display: inline-block; font-weight: bold;">
+                            <div class="d-flex flex-column">
+
+                                <div> Last Billing Date</div>
+
+                                <div class="my-2" style="color:grey; font-weight: 600;">22 Jul 2024
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="text-center table-width-xl"
+                            style=" display: inline-block; font-weight: bold; color:red">
+                            <div class="d-flex flex-column">
+
+                                <div> Expiry on <i class=" mx-2 bi bi-info-circle"></i></div>
+
+                                <div class="my-2" style="color:grey; font-weight: 600;">22 Aug 2024
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="row row-cols-5 g-4 mt-4 py-3 mx-1" style="border-bottom: 0.2rem solid black;">
+                <div class="text-center" style="color:grey; font-weight: 500; font-size: 0.9rem;">Plan &
+                    Addon Details</div>
+                <div class="text-center" style="color:grey; font-weight: 500; font-size: 0.9rem;">Qty/No Of
+                    Users</div>
+                <div class="text-center" style="color:grey; font-weight: 500; font-size: 0.9rem;">Rate</div>
+                <div class="text-center" style="color:grey; font-weight: 500; font-size: 0.9rem;">Tax</div>
+                <div class="text-center" style="color:grey; font-weight: 500; font-size: 0.9rem;">Amount
+                </div>
+            </div>
+            <div class="row row-cols-5 g-4  py-3 mx-1" style="border-bottom: 0.1rem solid rgb(206, 206, 206);">
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">Tally On
+                    Cloud - Yearly</div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">1</div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">₹6,000
+                </div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">₹1,080
+                </div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">₹6,000
+                </div>
+            </div>
+            <div class="row row-cols-5 g-4  py-3 mx-1" style="border-bottom: 0.1rem solid rgb(206, 206, 206);">
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;"></div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;"></div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">
+                </div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">Sub Total
+                </div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">₹6,000
+                </div>
+            </div>
+            <div class="row row-cols-5 g-4  py-3 mx-1" style="border-bottom: 0.1rem solid rgb(206, 206, 206);">
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;"></div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;"></div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">
+                </div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">IGST18(18%)
+                </div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">₹1,080
+                </div>
+            </div>
+            <div class="row row-cols-5 g-4  py-3 mx-1" style="border-bottom: 0.1rem solid rgb(206, 206, 206);">
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;"></div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;"></div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">
+                </div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">TOTAL
+                </div>
+                <div class="text-center" style=" font-weight: 600; font-size: 0.9rem;">₹7,080
+                </div>
+            </div>
+        </div>
+        }
+        @else if(selectSection == "Order History"){
+        <div class="col-12">
+            <div class="mx-2" style="font-weight: 500;">Billing Information</div>
+
+            <div class="scrollableTable mt-5" style="overflow-x: auto; height: 42vh;">
+                <div style="width: max-content; position: relative;">
+                    <div style="position: sticky; top: 0; background: white; z-index: 1;">
+                        <div class="text-center table-width-xxl" *ngFor="let column of billColumns"
+                            style="display: inline-block; font-weight: bold;">
+                            {{column}}
+                        </div>
+                    </div>
+
+                    <div *ngFor=" let data of billData; let i=index"
+                        style="width: max-content; border-bottom: 1px solid #dee2e6; font-size: 0.95rem; height: 5rem;">
+                        <div *ngFor="let column of billColumns;" class="text-center py-4 table-width-xxl"
+                            style=" display: inline-block; height: 2.5rem; ">
+
+                            {{getData(i,column)}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        } @else if(selectSection == "Recent Activities"){
+        <div class="col-2 text-center" style="color:grey">
+            22 Jul 2024
+            3:20 PM
+        </div>
+        <div class="col-1">
+            <span
+                style=" display: block; width: 1rem; height: 1rem; border-radius: 50%; background-color: purple; margin-left: -0.43rem;"></span>
+            <span style="display: block; height: 5rem; width: 0.2rem; background-color: purple;"></span>
+        </div>
+        <div class="col-9">
+            <div style="font-weight: 600;">
+                Subscription Created with paid plan(dedicated virtual machine - monthly)(x1).
+            </div>
+            <span style="color:grey">By Vikas</span>
+        </div>
+        <div class="col-2 text-center" style="color:grey">
+            22 Jul 2024
+            3:20 PM
+        </div>
+        <div class="col-1">
+            <span
+                style=" display: block; width: 1rem; height: 1rem; border-radius: 50%; background-color: purple; margin-left: -0.43rem;"></span>
+            <span style="display: block; height: 5rem; width: 0.2rem; background-color: purple;"></span>
+        </div>
+        <div class="col-9">
+            <div style="font-weight: 600;">
+                Subscription Created with paid plan(dedicated virtual machine - monthly)(x1).
+            </div>
+            <span style="color:grey">By Vikas</span>
+        </div>
+        }
+        @else {
+
+        }
+
     </div>
+
 </div>

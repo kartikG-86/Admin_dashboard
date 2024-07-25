@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatMenuModule } from '@angular/material/menu'
 import { MatButtonModule } from '@angular/material/button'
@@ -20,16 +20,33 @@ import { ServerModalComponent } from './components/server-modal/server-modal.com
 import { TallyReleaseComponent } from './components/tally-release/tally-release.component';
 import { TallyReleaseModalComponent } from './components/tally-release-modal/tally-release-modal.component';
 import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
+import { CommonModule } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, DashboardComponent, MatMenuModule, MatButtonModule, NavbarComponent, LoginComponent, SidebarComponent, InstanceComponent, CloudUserComponent, ResellerComponent, AddResellerComponent, NgxColorsModule, AddLabelComponent, ManageLabelComponent, ServerComponent, TableComponent, ServerModalComponent, TallyReleaseComponent, TallyReleaseModalComponent,SubscriptionsComponent],
+  imports: [RouterOutlet, DashboardComponent, MatMenuModule, MatButtonModule, NavbarComponent, LoginComponent, SidebarComponent, InstanceComponent, CloudUserComponent, ResellerComponent, AddResellerComponent, NgxColorsModule, AddLabelComponent, ManageLabelComponent, ServerComponent, TableComponent, ServerModalComponent, TallyReleaseComponent, TallyReleaseModalComponent, SubscriptionsComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'admin-dashboard';
+  currentTheme: any
+  constructor(public router: Router) {
+    if (localStorage.getItem('darkMode')) {
+      let theme = localStorage.getItem('darkMode')
+      this.currentTheme = theme ? JSON.parse(theme) : false
+    }
+    else {
+      this.currentTheme = false
+    }
+  }
+
+  changeMode(event: any) {
+    this.currentTheme = event
+  }
+
+
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -10,6 +10,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+
+  @Input() mode: any
   sidebarItems = [
     { _id: 1, name: "Dashboard", icon: "bi bi-grid mx-2", href: '/dashboard' },
     { _id: 2, name: "Instance", icon: "bi bi-person mx-2", href: "/instance" },

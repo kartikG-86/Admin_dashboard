@@ -1,27 +1,15 @@
-<div class="container-fluid" style="overflow: hidden; height: 100vh;">
-    <div class="row sidebar-row">
-        <div class="col-xl-2  d-none d-xl-block py-3" style="height: 100%;">
-            <app-sidebar></app-sidebar>
-        </div>
-        <div class="col-xl-10 col-12 dashboard">
-            <!-- Navbar -->
-            <app-navbar></app-navbar>
-
-            <div class="d-flex flex-row justify-content-end mx-2 mx-md-5">
-                <button (click)="newTallyRelease()" class="btn px-3 py-2 my-3 mx-3"
-                    style="background-color: #f8c075; font-weight: 600; border-radius: 2rem;" data-bs-toggle="modal"
-                    data-bs-target="#uniqueLabelModal"> +
-                    Tally Release</button>
-            </div>
-
-            <!--- Table HTML -->
-            <div class=" mx-xxl-5 mx-2 my-2 p-4" style="background-color: white; border-radius: 1rem; overflow:hidden">
-                <app-table [data]="tallyData" [columns]="columnName"></app-table>
-            </div>
-
-        </div>
-    </div>
+<div class="d-flex flex-row justify-content-end mx-2 mx-md-5">
+    <button (click)="newTallyRelease()" class="btn px-3 py-2 my-3 mx-3"
+        style="background-color: #f8c075; font-weight: 600; border-radius: 2rem;" data-bs-toggle="modal"
+        data-bs-target="#uniqueLabelModal"> +
+        Tally Release</button>
 </div>
+
+<!--- Table HTML -->
+<div class=" mx-xxl-5 mx-2 my-2 p-4" style="background-color: white; border-radius: 1rem; overflow:hidden">
+    <app-table [data]="tallyData" [columns]="columnName"></app-table>
+</div>
+
 
 <div class="modal fade" id="uniqueLabelModal" tabindex="-1" aria-labelledby="labelModalLabel" aria-hidden="true">
     <app-tally-release-modal [isEdit]="isEdit" [editData]="newData"></app-tally-release-modal>

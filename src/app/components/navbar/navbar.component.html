@@ -1,4 +1,4 @@
-<div class=" mx-xs-2 mx-2 mx-xxl-5 mt-4 navbar p-2">
+<div class=" mx-xs-2 mx-2 mx-xxl-5 mt-4 navbar p-2" [ngClass]="darkMode ? 'darkMode' : 'lightMode'">
     <div class="col-12">
         <div class="d-flex flex-row justify-content-between ">
             <div>
@@ -16,8 +16,8 @@
                 </svg>
             </div>
             <div class="">
-                <span class="mx-3 fs-6" style="font-size: 16px; color:grey;font-weight: 500;"> <span class="mx-2"
-                        style="font-weight: 600; color:black">Wallet:</span> 25000</span>
+                <span class="mx-3 fs-6" style="font-size: 16px; font-weight: 500;"> <span class="mx-2"
+                        style="font-weight: 600;">Wallet:</span> <span style="color:grey">25000</span></span>
 
                 <img class="mx-3" src="https://bootstrapdemos.wrappixel.com/spike/dist/assets/images/profile/user-1.jpg"
                     alt="admin" (click)="showUserProfile()">
@@ -32,7 +32,7 @@
                             src="https://bootstrapdemos.wrappixel.com/spike/dist/assets/images/profile/user-1.jpg"
                             alt="admin">
                         <div class="mx-2 my-4" style="display:inline-flex;  flex-direction: column;">
-                            <div style="font-size: 18px;font-weight: 600; color:black">Kartik Goyal</div>
+                            <div style="font-size: 18px;font-weight: 600; ">Kartik Goyal</div>
 
                             <div style="font-size: 16px; color:grey;font-weight: 500;">Admin</div>
                             <div style="color: grey; font-weight: 500;">
@@ -45,14 +45,14 @@
 
                 </div>
                 <div class="mx-2 " style="display:inline-flex;  flex-direction: column;">
-                    <div class="d-md-block d-none" style="font-size: 18px;font-weight: 600; color:black">Kartik Goyal
+                    <div class="d-md-block d-none" style="font-size: 18px;font-weight: 600; ">Kartik Goyal
                     </div>
 
                     <div class="d-md-block d-none" style="font-size: 16px; color:grey;font-weight: 500;">Admin</div>
                 </div>
                 <div style="display: inline-block ">
                     <i (click)="changeMode()" style="font-size: 1.5rem;" class="mx-3"
-                        [ngClass]="darkMode == false ? 'bi bi-moon ': 'bi bi-brightness-high'"></i>
+                        [ngClass]="darkMode == false ? 'bi bi-brightness-high' :'bi bi-moon '"></i>
                     <!-- <i [ngClass]="" style="font-size: 1.5rem;" class="bi bi-brightness-high"></i> -->
                 </div>
 

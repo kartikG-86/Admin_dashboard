@@ -99,3 +99,11 @@
     width: 13.5rem;
     margin: 0 0.5rem;
 }
+.table-width-xxl{
+    width: 16rem;
+    margin: 0 0.5rem;
+}
+
+.table-width{
+  width: 10rem;
+}

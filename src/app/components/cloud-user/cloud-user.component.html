@@ -1,66 +1,54 @@
-<div class="container-fluid" style="overflow: hidden; height: 100vh;">
-    <div class="row sidebar-row">
-        <div class="col-xl-2  d-none d-xl-block py-3" style="height: 100%;">
-            <app-sidebar></app-sidebar>
+<!-- Filter HTML-->
+<div class="row row-cols-1 mx-xxl-5 mx-2 mt-4 d-none d-xl-block filter">
+    <div class="col">
+        <div class="mt-4 py-3 mx-3">
+            <i class="bi bi-search mx-3" style="-webkit-text-stroke: 1px;"></i> Search Here:
         </div>
+        <div class="d-flex flex-row justify-content-between">
+            <div class="d-flex flex-row justify-content-left">
 
-
-        <div class="col-xl-10 col-12 dashboard">
-            <!-- Navbar -->
-            <app-navbar></app-navbar>
-
-            <!-- Filter HTML-->
-            <div class="row row-cols-1 mx-xxl-5 mx-2 mt-4 d-none d-xl-block filter">
-                <div class="col">
-                    <div class="mt-4 py-3 mx-3">
-                        <i class="bi bi-search mx-3"
-                        style="-webkit-text-stroke: 1px;"></i> Search Here:
-                    </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div class="d-flex flex-row justify-content-left">
-
-                            <div class=" mx-1 mt-3 btn-group ">
-                                <button style="border:none" class="btn">
-                                    <div class="input-group mb-3 search-bar" >
-                                        <span class="input-group-text search-icon" id="basic-addon1">SubId</span>
-                                        <input type="text" class="form-control search" placeholder=""
-                                            aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </button>
-                            </div>
-                            <div class=" mx-1 mt-3 btn-group ">
-                                <button style="border:none" class="btn">
-                                    <div class="input-group mb-3 search-bar">
-                                        <span class="input-group-text search-icon" id="basic-addon1">Admin User Email</span>
-                                        <input type="text" class="form-control search" placeholder=""
-                                            aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </button>
-                            </div>
-                            <div class=" mx-1 mt-3 btn-group ">
-                                <button style="border:none" class="btn">
-                                    <div class="input-group mb-3 search-bar" >
-                                        <span class="input-group-text search-icon" id="basic-addon1">Cloud User Email</span>
-                                        <input type="text" class="form-control search" placeholder=""
-                                            aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                </button>
-                            </div>
+                <div class=" mx-1 mt-3 btn-group ">
+                    <button style="border:none" class="btn">
+                        <div class="input-group mb-3 search-bar">
+                            <span class="input-group-text search-icon" id="basic-addon1">SubId</span>
+                            <input type="text" class="form-control search" placeholder="" aria-label="Username"
+                                aria-describedby="basic-addon1">
                         </div>
-                        <div class="d-flex flex-row justify-content-end">
-                            <button class="btn my-3 search-btn mx-2 ">Search</button>
-                            <button class="btn my-3 reset-btn mx-2 ">Reset Filter</button>
-    
-                        </div>
-                    </div>
-
+                    </button>
                 </div>
+                <div class=" mx-1 mt-3 btn-group ">
+                    <button style="border:none" class="btn">
+                        <div class="input-group mb-3 search-bar">
+                            <span class="input-group-text search-icon" id="basic-addon1">Admin User Email</span>
+                            <input type="text" class="form-control search" placeholder="" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                    </button>
+                </div>
+                <div class=" mx-1 mt-3 btn-group ">
+                    <button style="border:none" class="btn">
+                        <div class="input-group mb-3 search-bar">
+                            <span class="input-group-text search-icon" id="basic-addon1">Cloud User Email</span>
+                            <input type="text" class="form-control search" placeholder="" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-end">
+                <button class="btn my-3 search-btn mx-2 ">Search</button>
+                <button class="btn my-3 reset-btn mx-2 ">Reset Filter</button>
 
             </div>
+        </div>
 
-            <!--- Table HTML -->
-            <div class=" mx-xxl-5 mx-2 my-4 p-4" style="background-color: white; border-radius: 1rem; overflow:hidden">
-                <!-- <div class="d-flex justify-content-between">
+    </div>
+
+</div>
+
+<!--- Table HTML -->
+<div class=" mx-xxl-5 mx-2 my-4 p-4" style="background-color: white; border-radius: 1rem; overflow:hidden">
+    <!-- <div class="d-flex justify-content-between">
                     <div class="text-center d-block d-xl-none"
                         style="border-radius: 2rem; height: 2.4rem; width: 2.4rem; color: white; background-color: #0085db;">
                         <i style="font-size: 1.4rem;" class="bi bi-list"></i>
@@ -88,14 +76,14 @@
                         </button>
                     </div>
                 </div> -->
-                 @if(data.length > 0){
-                     <!-- <h6 *ngIf="start >= 0 && end <= instanceData.length"
+    @if(data.length > 0){
+    <!-- <h6 *ngIf="start >= 0 && end <= instanceData.length"
                     style="font-weight: bold;">Showing {{this.start+1}}
                     to
                     {{this.end}} of
                     {{this.totalPages}}
                     records</h6> -->
-                    <!-- <div class="scrollableTable mt-5" style="overflow-x: auto; height: 40vh;">
+    <!-- <div class="scrollableTable mt-5" style="overflow-x: auto; height: 40vh;">
                         <div style="width: max-content; position: relative;">
                             <div style="position: sticky; top: 0; background: white; z-index: 1;">
                                 <div class="text-center" *ngFor="let column of tableColumnName"
@@ -116,21 +104,21 @@
                         </div>
                     </div> -->
 
-                    }
-                    @else {
-                        <div class="text-center">
-                            <img src="/search_data.avif" alt="search_data"> 
-                            <h5>Unlock data insights by searching any field!</h5 >
-                        </div>
-                    }
+    }
+    @else {
+    <div class="text-center">
+        <img src="/search_data.avif" alt="search_data">
+        <h5>Unlock data insights by searching any field!</h5>
+    </div>
+    }
 
-                    <!-- @if(this.start >= this.end){
+    <!-- @if(this.start >= this.end){
                     <div *ngIf="dataPerPage.length == 0" class="text-center"
                         style="font-weight: 500; font-size: 1.4rem;">
                         Sorry no more data to show
                     </div>
                     }  -->
-                    <!-- <div class="d-flex flex-row justify-content-end mt-3">
+    <!-- <div class="d-flex flex-row justify-content-end mt-3">
                         <div class="mx-3 ">
 
                             <button class="btn " style="border:none">
@@ -170,7 +158,4 @@
                             </ul>
                         </nav>
                     </div> -->
-            </div>
-        </div>
-    </div>
 </div>

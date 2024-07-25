@@ -16,6 +16,18 @@ export class SubscriptionDetailsComponent {
   subId: any
   selectSection = "Overview"
   sections = ["Overview", "Order History", "Recent Activities", "License Details"]
+
+  billColumns = ["Bill No.", "Date", "Action", "Credit", "Debit"]
+
+  billData: any[] = [{
+    "Bill No.": "trans_21107",
+    "Date": "22/07/2024",
+    "Action": "Create new subscription.",
+    "Credit": 0,
+    "Debit": 1000
+  }]
+
+
   subscriptionDetails: any[] = [
     { key: 'Subscription ID', value: 'SUB-P012285' },
     { key: 'Subscriber Since', value: '11/07/2024' },
@@ -36,5 +48,9 @@ export class SubscriptionDetailsComponent {
 
   changeSection(type: any) {
     this.selectSection = type
+  }
+
+  getData(index: any, type: any) {
+    return this.billData[index][type];
   }
 }

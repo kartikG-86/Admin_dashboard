@@ -54,7 +54,10 @@
     background-color: #e0d7f7;
     background-image: linear-gradient(to right, #f1ebff, #f1ebff);
     background-position: 0 100%;
+}
 
+.sidebarItemDark{
+    color:black
 }
 
 .sideItem-container::-webkit-scrollbar-track
@@ -139,86 +142,13 @@
     cursor: pointer;
 }
 
-.filter{
-    height: 5rem;
-    border-radius: 1rem;
-    background-color: white;
-    font-size: 1rem;
-    font-weight: 600;
+
+.darkMode{
+    background-color: #1e1e1e;
+    color:white
 }
 
-.filter-type{
-    height: 2.5rem;
-    padding-right: 1rem;
-    border-radius: 0%;
-    border-right: 0.1rem solid rgb(209, 208, 208);
-    cursor: pointer;
-    
-}
-
-.filter-type button{
-    font-family: "Plus Jakarta Sans", Arial, Helvetica, sans-serif ;
-    font-weight: 400;
-    color:grey
-}
-
-.filter-options{
-    position: relative;
-    /* left:-10rem; */
-    /* top:2rem; */
-    width: max-content;
-    border-radius: 1rem;
-    height: max-content;
-    padding: 0.7rem;
-
-}
-
-.filter-options li{
-    border-radius: 1rem;
-}
-
-.filter-options li a{
-    list-style: none;
-    margin: 0.5rem 0;
-    font-size: 1rem;
-    font-weight: 400;   
-    border-radius: 1rem;
-    color:grey
-}
-
-.filter-options li a:hover{
-    background-color: #f4efff;
-}
-
-/* .table{
-    margin-bottom: 1rem;
-} */
-
-/* .table-row{
-    height: 4rem;
-} */
-
-.label-value{
-    font-weight: bold;
-}
-
-.label-text{
-    color:grey
-}
-
-.graph-btn{
-    border-radius: 2rem;
-   border:none;
-   font-weight: 500;
-    margin: 0 0.5rem;
-}
-
-.graph-btn-clicked{
-    background-color: #fa896b;
-    color:black;
-}
-
-.card_style{
-    background-color: white; border-radius: 1rem;
+.lightMode{
+    background-color: #f8f5f5;
 }
 

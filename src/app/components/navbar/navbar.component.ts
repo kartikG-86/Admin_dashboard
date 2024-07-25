@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -10,12 +10,24 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   darkMode = false
-  isUserProfile=false
+  constructor() {
+    if (localStorage.getItem('darkMode')) {
+      let theme = localStorage.getItem('darkMode')
+      this.darkMode = theme ? JSON.parse(theme) : false
+    }
+    else {
+      this.darkMode = false
+    }
+  }
+  isUserProfile = false
+  @Output() mode = new EventEmitter<any>()
   changeMode() {
     this.darkMode = !this.darkMode
+    this.mode.emit(this.darkMode)
+    localStorage.setItem('darkMode', JSON.stringify(this.darkMode))
   }
 
-  showUserProfile(){
+  showUserProfile() {
     this.isUserProfile = !this.isUserProfile
   }
 

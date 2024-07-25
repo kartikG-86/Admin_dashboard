@@ -1,1 +1,24 @@
+@if(router.url.includes('login') == false){
+<div class="container-fluid" style="overflow: hidden; height: 100vh;">
+    <div class="row sidebar-row">
+        <div class="col-xl-2  d-none d-xl-block py-3" style="height: 100%;"
+           >
+            <app-sidebar [mode]="currentTheme"></app-sidebar>
+        </div>
+        <div class="col-xl-10 col-12 dashboard" [ngClass]="currentTheme == true ? 'darkMode':'lightMode'">
+            <!-- Navbar -->
+            <app-navbar (mode)="changeMode($event)"></app-navbar>
+
+            @if(router.url.includes('dashboard')){
+            <app-dashboard [mode]="currentTheme"></app-dashboard>
+            }
+            @else {
+            <router-outlet></router-outlet>
+            }
+        </div>
+    </div>
+</div>
+}
+@else {
 <router-outlet></router-outlet>
+}
